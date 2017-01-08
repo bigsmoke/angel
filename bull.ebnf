@@ -4,7 +4,11 @@ dynamic path = ( '((' , steps , '))' ) | ( '(' , steps , ')' ) ;
 static path = ( '[[' , steps , ']]' ) | ( '[' , steps , ']' ) ;
 steps = angel , [ step left , [ link ] ] , [ step right , [ steps ] ] ;
 link = asymmetric link | symmetric link | knot ;
-asymmetric link = { angel , point right } , [ heavy knot ] , { point left , angel } ;
+asymmetric link = { angel , point right , [ define | undefine ] } ,
+                  [ heavy knot ] , 
+		  { [ define | undefine ] , point left , angel } ;
+		  (* Do something different with heavy knots? *)
+		  (* Actually make at least one point obligatory! *)
 symmetric link = point left , angel , point right ;
 point right = light point right | heavy point right ;
 point left = light point left | heavy point left ;
@@ -22,17 +26,21 @@ light step up = '|' ;
 heavy step up = '||' ;
 heavy knot = '&&' ;
 knot = '&' ;
-angel = name | unknown | superpath | definition | caller | argument | filter | count | length ;
+angel = name | unknown | test | superpath | define | undefine | caller | argument | filter | count | length ;
+name = { alphanumeric } , { alphanumeric | '-' | '.' | ',' | WS } ;
 unknown = '?' ;
+test = '??' ;
 superpath = '^' ;
-definition = '!' ;
+define = '!' ;
+undefine = '-!' ;
 caller = '^@' ;
 argument = '@' ;
 filter = '*' ;
 count = '#' ;
 length = '#' , digit , { digit } , [ '.' , digit , { digit } ] ;
 WS = white space ;
-white space = ' ' | '\t' | '\n' ;
+white space = ' ' | '\t' | '\n' , { white space } ;
+alphanumeric = letter | digit ;
 letter = "A" | "B" | "C" | "D" | "E" | "F" | "G" | "H" | "I" | "J" | "K" | "L" | "M" | "N" | "O" | "P" | "Q" | "R"
        | "S" | "T" | "U" | "V" | "W" | "X" | "Y" | "Z" | "a" | "b" | "c" | "d" | "e" | "f" | "g" | "h" | "i" | "j"
        | "k" | "l" | "m" | "n" | "o" | "p" | "q" | "r" | "s" | "t" | "u" | "v" | "w" | "x" | "y" | "z"  ;
