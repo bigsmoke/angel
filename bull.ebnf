@@ -1,4 +1,4 @@
-bull = path ;
+bull = { path } ;
 path = dynamic path | static path ;
 dynamic path = ( '((' , steps , '))' ) | ( '(' , steps , ')' ) ;
 static path = ( '[[' , steps , ']]' ) | ( '[' , steps , ']' ) ;
