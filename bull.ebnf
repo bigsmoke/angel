@@ -1,4 +1,0 @@
-<bull> ::= <static_path>*
-<static_path> ::= <static_path_heavy> | <static_path_light>
-<static_path_heavy> ::= '[[' ... ']]'
-<static_path_light> ::= '[' ... ']'
