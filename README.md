@@ -25,3 +25,11 @@ Get to `angel 4`:
 ```
 angel 1 \ < relationship C / ? \ relationship D > / ?
 ```
+
+### Blocks
+
+#### Heavy steps
+
+```
+[ angel 1 \ < relationship C / ? \ relationship D > // ? ]
+```
