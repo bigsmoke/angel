@@ -1,2 +1,3 @@
-# angel
-Angel brings bytes to heaven
+# Angel
+
+Angel brings bytes to heaven.
