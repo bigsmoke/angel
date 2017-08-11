@@ -33,3 +33,19 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 ```
 [ angel 1 \ < relationship C / ? \ relationship D > // ? ]
 ```
+
+### Querying relationships
+
+*Not so sure about this part*
+
+Are `angel 1` and `angel 2` related through `relationship A`?
+
+```
+angel 1 \ relationship A >? / angel 2
+```
+
+(How) are `angel 1` and `angel 2` related?
+
+```
+angel 1 \ ? > < ? / angel 2
+```
