@@ -26,6 +26,14 @@ Get to `angel 4`:
 angel 1 \ < relationship C / ? \ relationship D > / ?
 ```
 
+### Angels don't exist; thus, they can't be created
+
+Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `+` placeholder is used:
+
+```
+angel 1 \ <relationship C / +
+```
+
 ### Blocks
 
 #### Heavy steps
