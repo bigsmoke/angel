@@ -57,3 +57,5 @@ angel 1 \ relationship A >? / angel 2
 ```
 angel 1 \ ? > < ? / angel 2
 ```
+
+> The goal of Computer Science is to build something that will last at least until we've finished building it.
