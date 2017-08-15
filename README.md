@@ -34,12 +34,26 @@ Angels aren't objects. They don't have a phsyical representation. They aren't ob
 angel 1 \ <relationship C / +
 ```
 
-### Blocks
+### Paths (static)
+
+A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
 
 #### Heavy steps
 
 ```
 [ angel 1 \ < relationship C / ? \ relationship D > // ? ]
+```
+
+#### The superpath 
+
+```
+[ angel 
+```
+
+### Dynamic paths
+
+```
+[ ( something dynamic that happens ) < relationship A / B ]
 ```
 
 ### Querying relationships
