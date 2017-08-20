@@ -28,10 +28,10 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 
 ### Angels don't exist; thus, they can't be created
 
-Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `+` placeholder is used:
+Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `!` placeholder is used:
 
 ```
-angel 1 \ <relationship C / +
+angel 1 \ < relationship C / !
 ```
 
 ### Paths (static)
@@ -63,7 +63,7 @@ A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` 
 Are `angel 1` and `angel 2` related through `relationship A`?
 
 ```
-angel 1 \ relationship A >? / angel 2
+angel 1 \ relationship A ? > / angel 2
 ```
 
 (How) are `angel 1` and `angel 2` related?
@@ -71,5 +71,41 @@ angel 1 \ relationship A >? / angel 2
 ```
 angel 1 \ ? > < ? / angel 2
 ```
+
+### Dynamic paths and command arguments
+
+```
+[ @ \\ < sum / #3 | #5 ]
+```
+
+Would return `#8`.
+
+### Implied relationships, events, triggers, and filters
+
+```
+angel 1 \ < relationship D / * \
+```
+
+The path will further unfold from `*` as soon as something ‘new’ is related to `angel 1` through `relationship D`.
+
+You can create a new event type:
+
+```
+{ filter }
+```
+
+### Indicator summary
+
+| Indicator    | Imprintable? |                         |
+| ------------ | ------------:| ----------------------- |
+| `\`          |      (heavy) | step left               |
+| `/`          |      (heavy) | step right              |
+| `|`          |              | step forward            |
+| `<`          |      (heavy) | point left              |
+| `>`          |      (heavy) | point right             |
+| `?`          |              | unknown angel           |
+| `!`          |              | defined angel           |
+| `*`          |              | possible angel          |
+| `~`          |              | dynamic path/pattern    |
 
 > The goal of Computer Science is to build something that will last at least until we've finished building it.
