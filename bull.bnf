@@ -1,9 +1,0 @@
-<bull> ::= <static_path>*
-<static_path> ::= <static_path_heavy> | <static_path_light>
-<static_path_heavy> ::= '[[' ... ']]'
-<static_path_light> ::= '[' ... ']'
-<dynamic_path> ::= <dynamic_path_heavy> | <dynamic_path_light>
-<dynamic_path_heavy> ::= '((' ... '))'
-<dynamic_path_light> ::= '(' ... ')'
-<step> ::= <step_left> | <step_right> | <step_up>
-
