@@ -28,7 +28,7 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 
 ### Angels don't exist; thus, they can't be created
 
-Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `!` placeholder is used:
+Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `!`—_angel definition_—placeholder is used:
 
 ```
 angel 1 \ < relationship C / !
@@ -40,14 +40,36 @@ A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` 
 
 #### Heavy steps
 
+Some steps—if they are heavy—leave an imprint. A step is made heavy by doubling the `\` or `/`.
+
 ```
 [ angel 1 \ < relationship C / ? \ relationship D > // ? ]
 ```
 
-#### The superpath 
+The imprinted angels in a path are the angels that can be pointed at in the superpath:
 
 ```
-[ angel 
+[ angel 1 \ rel. C / ? \ rel. D > // ? ] \ < rel. E / ?
+```
+
+The final unknown angel (`?`) at the right would be the angel related along `rel. E` to the final unknown angel in the subpath, preceded by the heavy step right (`//`).
+
+#### Heavy paths
+
+A whole path can be made heavy, allowing stepping onto _it_ rather than its imprints:
+
+```
+[[ I \ < am / ? / a / complicated path ]] \ < angel name / I am now a complicated path with a name
+```
+
+#### Recursion and the superpath
+
+A path can refer to itself by means of `[]`, which allows for recursion.
+
+A subpath can refer to its superpath by means of `[^]`. Actually, this would refer to the imprint of its superpath. To refer to the actual path itself would require `[[^]]`. To refer back just to the containing _step_, `^` without surrounding `[]` is used.
+
+```
+[ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
 ```
 
 ### Dynamic paths
