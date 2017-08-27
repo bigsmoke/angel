@@ -72,12 +72,6 @@ A subpath can refer to its superpath by means of `[^]`. Actually, this would ref
 [ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
 ```
 
-### Dynamic paths
-
-```
-[ ( something dynamic that happens ) < relationship A / B ]
-```
-
 ### Querying relationships
 
 *Not so sure about this part*
@@ -95,6 +89,10 @@ angel 1 \ ? > < ? / angel 2
 ```
 
 ### Dynamic paths and command arguments
+
+```
+[ ( something dynamic that happens ) < relationship A / B ]
+```
 
 ```
 [ @ \\ < sum / #3 | #5 ]
