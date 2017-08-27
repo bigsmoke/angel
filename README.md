@@ -129,3 +129,11 @@ You can create a new event type:
 | `~`          |              | dynamic path/pattern    |
 
 > The goal of Computer Science is to build something that will last at least until we've finished building it.
+
+## The Angel universe
+
+Pretending that angels exists opens up a whole new universe, where objects dissolve in their relationships. 
+
+```
+[ 9761 VB ]
+```
