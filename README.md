@@ -98,6 +98,8 @@ angel 1 \ ? > < ? / angel 2
 
 Would return `#8`.
 
+Dynamic paths are not walked until the moment that a _command argument_ (`@`) placehold is found that relates along a _command argument_ relationship (that is: a relationship that inherits from `command argument`).
+
 ### Implied relationships, events, triggers, and filters
 
 ```
@@ -123,6 +125,7 @@ You can create a new event type:
 | `>`          |      (heavy) | point right             |
 | `?`          |              | unknown angel           |
 | `!`          |              | defined angel           |
+| `@`          |              | command argument        |
 | `*`          |              | possible angel          |
 | `~`          |              | dynamic path/pattern    |
 
