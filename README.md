@@ -118,7 +118,7 @@ To string some angels together:
 first A \ previous > & < next / second A & third A & fourth A & fifth A
 ```
 
-String basically take the place of loops and list comprehensions in traditional programming languages. When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
+When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
 
 ```
 first A \ & < next // &?
@@ -144,7 +144,7 @@ Events can also be forbidden to happen:
 angel 1 \ < relationship E / *# = 0
 ```
 
-This won't allow anything to be related to `angel 1` through `relationship E`. Yes, Angel allows you firewall-style control of everything.
+This won't allow anything to be related to `angel 1` through `relationship E`.
 
 ```
 { filter }
