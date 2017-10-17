@@ -141,7 +141,7 @@ The steps from `*` will be walked whenever something ‘new’ is related to `an
 Events can also be forbidden to happen:
 
 ```
-angel 1 \ < relationship E / # = 0
+angel 1 \ < relationship E / *# = 0
 ```
 
 This won't allow anything to be related to `angel 1` through `relationship E`. Yes, Angel allows you firewall-style control of everything.
