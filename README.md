@@ -118,6 +118,14 @@ To string some angels together:
 first A \ previous > & < next / second A & third A & fourth A & fifth A
 ```
 
+This is semantically different just continuing to step right:
+
+```
+first A \ previous > < next / second A / third A / fourth A / fifth A
+```
+
+Steps right _are_ substring, of a path, but they are not normally substrings in the meaningful sense.
+
 When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
 
 ```
