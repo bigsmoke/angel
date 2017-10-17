@@ -89,16 +89,20 @@ angel 1 \ ? > < ? / angel 2
 ### Dynamic paths and command arguments
 
 ```
-[ ( something dynamic that happens ) < relationship A / B ]
+[ ( something dynamic that happens ) \ < relationship A / B ]
+```
+
+Dynamic paths are not walked until the moment that a _command argument_ (`@`) placeholder is found that relates along the _command argument_ axis:
+
+```
+B \ relationship A > // @
 ```
 
 ```
 [ @ \\ < sum / #3 | #5 ]
 ```
 
-Would return `#8`.
-
-Dynamic paths are not walked until the moment that a _command argument_ (`@`) placehold is found that relates along a _command argument_ relationship (that is: a relationship that inherits from `command argument`).
+could return `#8`.
 
 ### Implied relationships, events, triggers, and filters
 
