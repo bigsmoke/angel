@@ -107,10 +107,10 @@ could return `#8`.
 ### Implied relationships, events, triggers, and filters
 
 ```
-angel 1 \ < relationship D / * \
+angel 1 \ < relationship D / { ^ \  }
 ```
 
-The path will further unfold from `*` as soon as something ‘new’ is related to `angel 1` through `relationship D`.
+The path within `{}` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
 
 You can create a new event type:
 
