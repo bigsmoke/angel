@@ -141,7 +141,7 @@ first A \ & < next // &#
 Dynamic strings allow you to unfold a set of angels into a sorted sequence:
 
 ```
-lots of angels \ greater than or equals > & < less than / &@
+lots of angels \ greater than or equals > & < less than // &@
 ```
 
 ### Implied relationships, events, triggers, and filters
