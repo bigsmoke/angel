@@ -104,15 +104,47 @@ B \ relationship A > // @
 
 could return `#8`.
 
+### Lengths and strings
+
+To get the number of `relative`s of `my angel`:
+
+```
+my angel \ < relative // #
+```
+
+To string some angels together:
+
+```
+first A \ previous > & < next / second A & third A & fourth A & fifth A
+```
+
+String basically take the place of loops and list comprehensions in traditional programming languages. When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
+
+```
+first A \ & < next // &?
+```
+
+Counts (to determine the string length) can also be done in this manner:
+
+```
+first A \ & < next // &#
+```
+
 ### Implied relationships, events, triggers, and filters
 
 ```
-angel 1 \ < relationship D / { ^ \  }
+angel 1 \ < relationship D / *
 ```
 
-The path within `{}` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
+The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
 
-You can create a new event type:
+Events can also be forbidden to happen:
+
+```
+angel 1 \ < relationship E / # = 0
+```
+
+This won't allow anything to be related to `angel 1` through `relationship E`. Yes, Angel allows you firewall-style control of everything.
 
 ```
 { filter }
@@ -128,9 +160,10 @@ You can create a new event type:
 | `<`          |      (heavy) | point left              |
 | `>`          |      (heavy) | point right             |
 | `?`          |              | unknown angel           |
-| `!`          |              | defined angel           |
+| `!`          |              | angel definition        |
+| `#`          |              | angel count             |
 | `@`          |              | command argument        |
-| `*`          |              | possible angel          |
+| `*`          |              | angel event             |
 | `~`          |              | dynamic path/pattern    |
 
 > The goal of Computer Science is to build something that will last at least until we've finished building it.
