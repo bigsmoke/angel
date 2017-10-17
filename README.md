@@ -118,7 +118,7 @@ You can create a new event type:
 | ------------ | ------------:| ----------------------- |
 | `\`          |      (heavy) | step left               |
 | `/`          |      (heavy) | step right              |
-| `|`          |              | step forward            |
+| `\|`         |              | step forward            |
 | `<`          |      (heavy) | point left              |
 | `>`          |      (heavy) | point right             |
 | `?`          |              | unknown angel           |
