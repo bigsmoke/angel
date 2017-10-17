@@ -74,8 +74,6 @@ A subpath can refer to its superpath by means of `[^]`. Actually, this would ref
 
 ### Querying relationships
 
-*Not so sure about this part*
-
 Are `angel 1` and `angel 2` related through `relationship A`?
 
 ```
