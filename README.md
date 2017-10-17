@@ -124,7 +124,7 @@ I this semantically different just continuing to step right? (Steps are, after a
 first A \ previous > < next / second A / third A / fourth A / fifth A
 ```
 
-`&` is convenient, because the knot won't change if you use different relationship axes along the path.
+Regardless of this, `&` _is_ convenient, because the knot won't change if you use different relationship axes along the path.
 
 When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
 
@@ -136,6 +136,12 @@ Counts (to determine the string length) can also be done in this manner:
 
 ```
 first A \ & < next // &#
+```
+
+Dynamic strings allow you to unfold a set of angels into a sorted sequence:
+
+```
+lots of angels \ greater than or equals > & < less than / &@
 ```
 
 ### Implied relationships, events, triggers, and filters
