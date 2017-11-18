@@ -4,7 +4,7 @@ Angels don't exist. Therefore, every‘thing’ in a computer could be called an
 
 ## BULL—BigSmoke's Unified Linking Language
 
-If you say shit about non-existent entities, this shit is likely to be _bullshit_; hence the name for the language with which to query and describe angels: BULL.
+If you say shit about non-existent entities, this shit is likely to be _bullshit_; hence the name for the language with which to query and describe angels: *BULL*.
 
 BULL is a general-purpose computer language, and in order to serve is general purpose, it needs to be able to do only 2 things: (1) creating relationships between angels and (2) querying these relationships.
 
@@ -104,6 +104,8 @@ B \ relationship A > // @
 
 could return `#8`.
 
+Within `()`, the command caller context can be referenced using: `^@`.
+
 ### Lengths and strings
 
 To get the number of `relative`s of `my angel`:
@@ -150,7 +152,11 @@ lots of angels \ greater than or equals > & < less than // &@
 angel 1 \ < relationship D / *
 ```
 
-The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
+The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`. This can also be made more generic:
+
+```
+* \ < relationship D / *
+```
 
 Events can also be forbidden to happen:
 
@@ -160,9 +166,49 @@ angel 1 \ < relationship E / *# = 0
 
 This won't allow anything to be related to `angel 1` through `relationship E`.
 
+Events occur implicitly whenever relationships are created or destroyed. There's no notion of an explicit event, nor would it add expressivity.
+
+Instead of explicit events (or ‘signals’, as Qt would call them), Angel has filters. Filters match a pattern. Patterns can be of arbitrary complexity. The concrete occurance of a pattern is called an _event_. A _filter_ is the non-distinct stage of an _event_. Both stages are _patterns_. An event may match any number of filters. Like already mentioned, there's no special syntax for defining events, nor is there a need.
+
 ```
-{ filter }
+{ pattern }
 ```
+
+Like paths, patterns can be made heavy by doubling the `{}`:
+
+```
+{{ heavy pattern }}
+```
+
+There's no need for explicit events, but patterns _can_ be invoked explicitly, although indirectly. Without specifying which pattern precisely, the most suitable pattern for any context can be invoked by using the `~` indicator:
+
+```
+angel 1 \ < relationship B / ~
+```
+
+The most suitable pattern is always the one that is _most specific_. The specificity of a pattern depends on the detailedness with which it matches.
+
+Patterns have three contexts:
+
+  1. `^~` is the _concrete pattern_ context.
+  2. `^*` is the event trigger context.
+  3. `^` is the _pattern path_ context.
+  
+The _concrete pattern_ context (`^~`) only exists when a pattern has been explicitly invoked using `~`. `^*` is always available and points to the relationship which is matched by the pattern.
+  
+  
+A pattern acts like a regular path, except that its concrete steps are not known at the time of creation. Note that this goes beyond the concept of recursion that is available in both dynamic and static ordinary paths. A pattern is about matchig a pre-existing filter on a concrete set of relationships. A pattern can be recusive, though. For that, a pair of empy curly braces (`{}`) can be used.
+
+Self-learning patterns can be defined by attaching positive and negative weight to relationships or by blacklisting events:
+
+```
+{
+  ^~ \ < bad relationship / # = 0
+  ^~ \ < good relatinship / # = 1+
+}
+```
+
+This wouldn't allow the pattern to match in any context with a `bad relationship` and would require at least one `good relationship`.
 
 ### Indicator summary
 
@@ -176,11 +222,31 @@ This won't allow anything to be related to `angel 1` through `relationship E`.
 | `?`          |              | unknown angel           |
 | `!`          |              | angel definition        |
 | `#`          |              | angel count             |
+| `^`          |              | uperpath context        |
 | `@`          |              | command argument        |
 | `*`          |              | angel event             |
 | `~`          |              | dynamic path/pattern    |
 
-> The goal of Computer Science is to build something that will last at least until we've finished building it.
+### Indicator combinations and their meanings
+
+| Indicators   |                                                   |
+| ------------ | ------------------------------------------------- |
+| `^@`         | The calling context (can only be used within `()`)|
+| `^*`         | The event that triggered the filter               |
+| `^~`         | The generic pattern's _concrete_ context          |
+| `?!`         | Define endpoint if it doesn't already exist       |
+
+### BULL in bullets
+
+* Everything in the Angel universe (read: _namespace_) is an angel.
+* Angels are imaginary endpoints for relationships.
+* Angels have one or more names.
+* Angel names are inherited from each angel's ancestors.
+* Most angels have a whole bunch of inherited names.
+* `popular angel` refers to the _complete set_ of angels with the `popular angel` name.
+* To select only the first angel with a given name, `#0` can be used.
+* That is because the default relationship axis is `parent > < child`.
+* `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 
 ## The Angel universe
 
@@ -189,3 +255,7 @@ Pretending that angels exists opens up a whole new universe, where objects disso
 ```
 [ 9761 VB ]
 ```
+
+> The goal of Computer Science is to build something that will last at least until we've finished building it.
+
+<!-- :set expandtab tabstop=2 shiftwidth=2 wrap=100 : -->
