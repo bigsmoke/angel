@@ -20,7 +20,7 @@ Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `an
 
 ### Querying angels
 
-Get to `angel 4`:
+Get to `angel 4` without knowing `angel 4` or `angel 3` its names:
 
 ```
 angel 1 \ < relationship C / ? \ relationship D > / ?
