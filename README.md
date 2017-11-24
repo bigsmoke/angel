@@ -34,6 +34,16 @@ Angels aren't objects. They don't have a phsyical representation. They aren't ob
 angel 1 \ < relationship C / !
 ```
 
+### Angels have parents and can have children
+
+Every angel descends from `angel`. To make an angel descend from another angel:
+
+```
+Popko van der Molen | Rowan van der Molen !
+```
+
+`Rowan van der Molen` will be a new `angel child` of `angel parent` `Popko van der Molen`.
+
 ### Paths (static)
 
 A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
@@ -114,13 +124,13 @@ To get the number of `relative`s of `my angel`:
 my angel \ < relative // #
 ```
 
-To string some angels together:
+To string angels together:
 
 ```
 first A \ previous > & < next / second A & third A & fourth A & fifth A
 ```
 
-I this semantically different just continuing to step right? (Steps are, after all, substrings of a path.)
+Is this semantically different from just continuing to step right? Steps are, after all, substrings of a path.
 
 ```
 first A \ previous > < next / second A / third A / fourth A / fifth A
