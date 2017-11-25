@@ -34,16 +34,6 @@ Angels aren't objects. They don't have a phsyical representation. They aren't ob
 angel 1 \ < relationship C / !
 ```
 
-### Angels have parents and can have children
-
-Every angel descends from `angel`. To make an angel descend from another angel:
-
-```
-Popko van der Molen | Rowan van der Molen !
-```
-
-`Rowan van der Molen` will be a new `angel child` of `angel parent` `Popko van der Molen`.
-
 ### Paths (static)
 
 A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
@@ -156,6 +146,27 @@ Dynamic strings allow you to unfold a set of angels into a sorted sequence:
 lots of angels \ greater than or equals > & < less than // &@
 ```
 
+### Angels have parents and can have children
+
+Every angel descends from `angel`. To make an angel descend from another angel:
+
+```
+Van der Molen &#0 / Rowan van der Molen !
+```
+
+`Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that the default relationship axis is the `angel parent >< angel child` relationship, the above example can be made more verbose:
+
+```
+Van der Molen \ angel parent > & < angel child / &#0 & Rowan van der Molen !
+```
+
+The `&#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `&#0` 
+
+### Stacking angels
+
+`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to 
+
+
 ### Implied relationships, events, triggers, and filters
 
 ```
@@ -245,6 +256,8 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 | `^*`         | The event that triggered the filter               |
 | `^~`         | The generic pattern's _concrete_ context          |
 | `?!`         | Define endpoint if it doesn't already exist       |
+| `&#`         | The number of subsequent substrings               |
+| `&#0`        | The left-most substring in a superstring          |
 
 ### BULL in bullets
 
@@ -254,7 +267,7 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 * Angel names are inherited from each angel's ancestors.
 * Most angels have a whole bunch of inherited names.
 * `popular angel` refers to the _complete set_ of angels with the `popular angel` name.
-* To select only the first angel with a given name, `#0` can be used.
+* To select only the first angel with a given name, `&#0` can be used.
 * That is because the default relationship axis is `parent > < child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 
