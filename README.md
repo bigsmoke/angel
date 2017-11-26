@@ -18,11 +18,12 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * Steps can also be _up_/_forward_: `Donald Duck \ < nephew / Huey | Dewey | Louie`. `Huey`, `Dewey` and `Louie` are all `nephew`s of `Donald Duck`, not of each other (which they would be if their relationship was described as `Donald Duck \ < nephew / Huey / Dewey / Louie`).
 * New angels are imagined into existence by the angel definition (`!`) indicator: `Donald Duck \ < nephew / !` would define `Donald Duck`'s fourth nephew.
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
-
-* Angel names are inherited from each angel's ancestors. (`angel B` above is _also_ called `angel A`.)
-* `angel` is always in the set of inherited names, except for _the_ `angel`, from which all other angels derive.
-* `popular angel` refers to the _complete set_ of angels with the `popular angel` name.
-* To select only the first angel with a given name, `&#0` can be used.
+* Each angel has a parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
+* The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck &#0 / Donald Duck ! ]`
+* Angel names are inherited from each angel's ancestors. (`Donald Duck` can also be called `Duck`.)
+* `Duck` refers to the _complete set_ of angels with the `Duck` name.
+* `angel` is each angel's set of names. Most angels inherit the name, except _the_ `angel`.
+* To select only the first angel with a given name, `&#0` can be used: `angel &#0`.
 * That is because the default relationship axis is `parent > < child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 
