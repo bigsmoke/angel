@@ -8,6 +8,24 @@ If you say shit about non-existent entities, this shit is likely to be _bullshit
 
 BULL is a general-purpose computer language, and in order to serve is general purpose, it needs to be able to do only 2 things: (1) creating relationships between angels and (2) querying these relationships.
 
+### BULL in bullets
+
+* Everything in the Angel universe (read: _namespace_) is an angel.
+* Angels are imaginary endpoints for relationships: `endpoint 1 \ < relationship > / endpoint 2`.
+* Relationships can be unidirectional (`angel X \ unidirectional relationship pointing to Y > < unidirectional relationship pointing to X / angel Y`), or bidirectional (`angel X \ < bidirectional relationship > / angel Y`).
+* Multiple steps can be organized into paths (`[]`): `angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
+* A path _almost_ always consists of a series of left-right steps. Angel hops from the left foot to the right, then joins the right foot with the left and steps right again from there.
+* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. This is just a shorthand, though, to avoid repetition: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
+* Steps can also be _up_/_forward_: `Donald Duck \ < nephew / Huey | Dewey | Louie`. `Huey`, `Dewey` and `Louie` are all `nephew`s of `Donald Duck`, not of each other (which they would be if their relationship was described as `Donald Duck \ < nephew / Huey / Dewey / Louie`).
+* New angels are imagined into existence by the angel definition (`!`) indicator: `angel A / !`
+* Angels have one or more names: `angel A / angel B !`.
+* Angel names are inherited from each angel's ancestors. (`angel B` above is _also_ called `angel A`.)
+* Most angels have a whole bunch of inherited names.
+* `popular angel` refers to the _complete set_ of angels with the `popular angel` name.
+* To select only the first angel with a given name, `&#0` can be used.
+* That is because the default relationship axis is `parent > < child`.
+* `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
+
 ### Relating angels
 
 Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `angel 1` to `angel 3` through `relationship C`, and `angel 3` to `angel 4` through `relationship D`:
@@ -258,18 +276,6 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 | `?!`         | Define endpoint if it doesn't already exist       |
 | `&#`         | The number of subsequent substrings               |
 | `&#0`        | The left-most substring in a superstring          |
-
-### BULL in bullets
-
-* Everything in the Angel universe (read: _namespace_) is an angel.
-* Angels are imaginary endpoints for relationships.
-* Angels have one or more names.
-* Angel names are inherited from each angel's ancestors.
-* Most angels have a whole bunch of inherited names.
-* `popular angel` refers to the _complete set_ of angels with the `popular angel` name.
-* To select only the first angel with a given name, `&#0` can be used.
-* That is because the default relationship axis is `parent > < child`.
-* `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 
 ## The Angel universe
 
