@@ -26,6 +26,7 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * To select only the first angel with a given name, `#0` can be used: `angel #0`.
 * That is because the default relationship axis is `parent > < child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
+* `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
 
 ### Relating angels
 
@@ -170,16 +171,16 @@ lots of angels \ greater than or equals > & < less than // &@
 Every angel descends from `angel`. To make an angel descend from another angel:
 
 ```
-Van der Molen &#0 / Rowan van der Molen !
+Van der Molen #0 / Rowan van der Molen !
 ```
 
 `Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that the default relationship axis is the `angel parent >< angel child` relationship, the above example can be made more verbose:
 
 ```
-Van der Molen \ angel parent > & < angel child / &#0 & Rowan van der Molen !
+Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
 ```
 
-The `&#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `&#0` 
+The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `#0` 
 
 ### Stacking angels
 
