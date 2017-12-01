@@ -19,11 +19,11 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * New angels are imagined into existence by the angel definition (`!`) indicator: `Donald Duck \ < nephew / !` would define `Donald Duck`'s fourth nephew.
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
 * Each angel has a parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
-* The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck &#0 / Donald Duck ! ]`
+* The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck #0 / Donald Duck ! ]`
 * Angel names are inherited from each angel's ancestors. (`Donald Duck` can also be called `Duck`.)
 * `Duck` refers to the _complete set_ of angels with the `Duck` name.
 * `angel` is each angel's set of names. Most angels inherit the name, except _the_ `angel`.
-* To select only the first angel with a given name, `&#0` can be used: `angel &#0`.
+* To select only the first angel with a given name, `#0` can be used: `angel #0`.
 * That is because the default relationship axis is `parent > < child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 
