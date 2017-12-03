@@ -144,7 +144,7 @@ To string angels together:
 first A \ previous > & < next / second A & third A & fourth A & fifth A
 ```
 
-Is this semantically different from just continuing to step right? Steps are, after all, substrings of a path.
+Semantically, this is no different from just continuing to step right. Steps are, after all, substrings of a path.
 
 ```
 first A \ previous > < next / second A / third A / fourth A / fifth A
