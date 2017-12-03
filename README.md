@@ -29,6 +29,7 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * `angel` is each angel's set of names. Most angels inherit the name, except _the_ `angel`.
 * To select only the first angel with a given name, `#0` can be used: `angel #0`.
 * That is because the default relationship axis is `parent > < child`.
+* The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 * `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
 
