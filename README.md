@@ -123,7 +123,7 @@ B \ relationship A > // @
 ```
 
 ```
-[ @ \\ < sum / #3 | #5 ]
+[ @ \\ sum > / #3 | #5 ]
 ```
 
 could return `#8`.
