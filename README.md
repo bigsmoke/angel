@@ -159,11 +159,15 @@ When used together with the _unknown angel_ placeholder (`&?`), `&` means someth
 first A \ & < next // &?
 ```
 
+`&?` together become the _untie_ indicator.
+
 Counts (to determine the string length) can also be done in this manner:
 
 ```
 first A \ & < next // &#
 ```
+
+`&#` doesn't exactly represent the string length, because only the substrings after `#0` will be counted. 
 
 Dynamic strings allow you to unfold a set of angels into a sorted sequence:
 
