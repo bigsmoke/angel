@@ -2,7 +2,7 @@
 
 Angels don't exist. Therefore, every‘thing’ in a computer could be called an `angel`, because these ‘things’ are not really things; they're abstraction upon abstraction for what eventually boils down to processor instructions.
 
-## BULL—BigSmoke's Unified Linking Language
+## BULL—BigSmoke's Unified Linking Language {#bull}
 
 If you say shit about non-existent entities, this shit is likely to be _bullshit_; hence the name for the language with which to query and describe angels: *BULL*.
 
@@ -45,7 +45,7 @@ Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `an
 
 ### Querying angels
 
-Get to `angel 4` without knowing `angel 4` or `angel 3` its names:
+Get to `angel 4` without knowing either `angel 4` or `angel 3` their names:
 
 ```
 angel 1 \ < relationship C / ? \ relationship D > / ?
@@ -53,7 +53,7 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 
 ### Angels don't exist; thus, they can't be created
 
-Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just an imaginary endpoints for relationships. To imagine a new angel into existence, the `!`—_angel definition_—placeholder is used:
+Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just imaginary endpoints for relationships. To imagine a new angel into existence, the `!`—_angel definition_—placeholder is used:
 
 ```
 angel 1 \ < relationship C / !
@@ -193,7 +193,17 @@ The `#0` is necessary because, otherwise, every angel that inherited the `Van de
 
 ### Stacking angels
 
-`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to 
+`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to the angel last stepped left to:
+
+```
+Donald Duck \ < newphew / Huey | Dewey | Louie
+```
+
+Or, the equivalent:
+
+```
+Donald Duck \ < nephew | Huey | Dewey | Louie
+```
 
 
 ### Implied relationships, events, triggers, and filters
@@ -216,9 +226,17 @@ angel 1 \ < relationship E / *# = 0
 
 This won't allow anything to be related to `angel 1` through `relationship E`.
 
-Events occur implicitly whenever relationships are created or destroyed. There's no notion of an explicit event, nor would it add expressivity.
+Events occur implicitly whenever angels are defined or undefined. There's no notion of an explicit event, nor would it add expressivity, because angels can appear and disappear at will.
 
-Instead of explicit events (or ‘signals’, as Qt would call them), Angel has filters. Filters match a pattern. Patterns can be of arbitrary complexity. The concrete occurance of a pattern is called an _event_. A _filter_ is the non-distinct stage of an _event_. Both stages are _patterns_. An event may match any number of filters. Like already mentioned, there's no special syntax for defining events, nor is there a need.
+Instead of explicit events (or ‘signals’, as Qt would call them), Angel has filters (which are a bit like Qt's ‘slots’). Filters match a pattern. Patterns can be of arbitrary complexity. The concrete occurance of a pattern is called an _event_. A _filter_ is the non-distinct stage of an _event_. Both stages are _patterns_. An event may match any number of filters. Like already mentioned, there's no special syntax for defining events, nor is there a need.
+
+Often, you'll want to relate relationships:
+
+```
+
+```
+
+One example of a relationship between relationships is that of superstring/substring and among substrings.
 
 ```
 { pattern }
