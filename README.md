@@ -206,25 +206,40 @@ Donald Duck \ < nephew | Huey | Dewey | Louie
 ```
 
 
-### Implied relationships, events, triggers, and filters
+### A path can be triggered by an event
 
 ```
-angel 1 \ < relationship D / *
+angel 1 \ { ^ \ < relationship D / * \ etc. }
+{ angel 1 \ < relationship D / * \ etc. }
 ```
 
-The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`. This can also be made more generic:
+The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`. 
+
+The enclosing `{}` separate the steps that are always executed to the steps that are taken whenever the filter within `{}` matches an event.
+
+This same filter can also be made to match anytime that anything is related along `relationship D` to anything else:
 
 ```
-* \ < relationship D / *
+{ * \ < relationship D / * \ continue along the path… }
 ```
+
+You could say that, if `?` means _whatever_, `*` means _whenever_.
 
 Events can also be forbidden to happen:
 
 ```
-angel 1 \ < relationship E / *# = 0
+angel 1 \ { ^ \ < relationship E / * = 0 }
 ```
 
-This won't allow anything to be related to `angel 1` through `relationship E`.
+Nothing is then allowed to be related to `angel 1` along `relationship E`.
+
+If you want to filter unlinking events:
+
+```
+{ Donald Duck \ < nephew / -* \ Decide what to do about Donald's missing nephew. }
+```
+
+`* \` matches the newly defined angel; `-* \` matches the just-unlinked angel.
 
 Events occur implicitly whenever angels are defined or undefined. There's no notion of an explicit event, nor would it add expressivity, because angels can appear and disappear at will.
 
@@ -233,7 +248,7 @@ Instead of explicit events (or ‘signals’, as Qt would call them), Angel has 
 Often, you'll want to relate relationships:
 
 ```
-
+{ * \ < brother > / * \ father > < son / * }
 ```
 
 One example of a relationship between relationships is that of superstring/substring and among substrings.
