@@ -97,6 +97,8 @@ A subpath can refer to its superpath by means of `[^]`. Actually, this would ref
 [ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
 ```
 
+The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) related along `rB` to `a1`. The angel(s) unknown would be the only angel(s) in the path's imprint.
+
 ### Querying relationships
 
 Are `angel 1` and `angel 2` related through `relationship A`?
