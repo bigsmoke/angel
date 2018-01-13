@@ -91,7 +91,7 @@ A whole path can be made heavy, allowing stepping onto _it_ rather than its impr
 
 A path can refer to itself by means of `[]`, which allows for recursion.
 
-A subpath can refer to its superpath by means of `[^]`. Actually, this would refer to the imprint of its superpath. To refer to the actual path itself would require `[[^]]`. To refer back just to the containing _step_, `^` without surrounding `[]` is used.
+A subpath can refer to its superpath by means of `[^]`. Actually, this would refer to the imprint of its superpath. To refer to the actual path itself would require `[[^]]`. To refer back just to the imprint of the previous _step_ in the superpath, `^` without surrounding `[]` is used.
 
 ```
 [ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
