@@ -31,4 +31,8 @@ namespace Angel
     class Path : public Angel
     {
     }; 
+
+    class Filter : public Angel
+    {
+    };
 }
