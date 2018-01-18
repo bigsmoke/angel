@@ -227,6 +227,8 @@ This same filter can also be made to match anytime that anything is related alon
 
 You could say that, if `?` means _whatever_, `*` means _whenever_.
 
+`*` can be used to match the creation & destruction of endpoints (as in `/ *` or `/ -*`), as wel as the creation & destruction of relationships (as in `a \ > * < / b`).
+
 Events can also be forbidden to happen:
 
 ```
