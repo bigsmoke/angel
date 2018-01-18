@@ -64,27 +64,31 @@ class Parser:
     class StepUp(Step):
         indicators = ['|']
 
-    class Angel(ABC):
+    class Angel(object):
         is_path = False
         is_step = False
         is_angel = True
 
-    class NamedAngel(Angel):
-        pass
+        class UnknownAngelIndicator(object):
+            indicator = '?'
 
-    class AngelPlaceholder(Angel):
-        placeholder = None
+        class AngelDefinitionIndicator(object):
+            indicator = '!'
 
-    class UnknownAngel(Angel):
-        placeholder = '?'
+        class AnyAngelAnyTimeIndicator(object):
+            indicator = '*'
 
-    class AngelDefinition(Angel):
-        placeholder = '!'
+        def __init__(self):
+            self.is_unknown = False
+            self.is_placeholder = False
+            self.is_definition = False
+            self.is_any_any_time = False
 
-    class AnyAngelAnyTime(Angel):
-        placeholder = '*'
+    class Point(ABC):
+        indicator = '<'
 
     PATH_TYPES = {T.opens_with: T for T in (StaticPath, DynamicPath, Filter)}
+    PLACEHOLDER_TYPES = {T.placeholder: T for T in (UnknownAngel, AngelDefinition, AnyAngelAnyTime)}
 
     SPACE_CHARACTERS = [' ', '\t', '\n']
 
@@ -94,8 +98,7 @@ class Parser:
 
         if isinstance(stream_or_string, io.IOBase):
             stream = stream_or_string
-            raise NotImplementedError()
-            # TODO: Contents of stream → string
+            self.string = stream.read(None)
         elif isinstance(stream_or_string, str):
             self.string = stream_or_string
         else:
@@ -107,40 +110,29 @@ class Parser:
     def __iter__(self):
         return self
 
-    def next(self):
+    def __next__(self):
+        """Yields paths, one at the time."""
+
+        path = None
+
         while self.string_index < self.string_length:
             char = self.string[self.string_index]
             if char in self.SPACE_CHARACTERS:
                 pass
             elif char in self.PATH_TYPES:
                 # Initialize new path
-                self._at_path = self.PATH_TYPES[char](superpath=self._at_path)
-            elif self.path is not None and char == self._at_path.closes_with:
-                self.path = self.path.superpath
-            elif self.path is None:
+                path = self.PATH_TYPES[char](superpath=path)
+            elif path is not None and char == path.closes_with:
+                if path.superpath is None:
+                    # We were in a root path; let's return it.
+                    return path
+                path = path.superpath
+                # We've returned to the superpath.
+            elif path is None:
                 raise BULLSyntaxError('First you must begin a path!')
-
-    def parse_character(self, char):
-        if not isinstance(char, str):
-            raise TypeError('Can only parse characters.')
-        if len(char) != 1:
-            raise TypeError('Can only parse on character at the time.')
-
-
-    def parse_string(self, string):
-        if not isinstance(string, str):
-            raise TypeError('string should be of type str.')
-
-        for char in string:
-            self.parse_character(char)
-
-    def parse_stream(self, stream):
-        if not issubclass(stream.__class__, io.IOBase):
-            raise TypeError()
-
-        for line in stream:
-            for char in line:
-                self.parse_character(char)
+            elif char in self.PLACEHOLDER_TYPES:
+                angel = 
+            self.string_index += 1
 
 
 import unittest
@@ -164,5 +156,6 @@ if __name__ == '__main__':
         test_runner = unittest.TextTestRunner()
         test_runner.run(test_suite)
     else:
-        bull_parser = Parser()
-        bull_parser.parse_stream(sys.stdin)
+        bull_parser = Parser(sys.stdin)
+        path = next(bull_parser)
+        print(path)
