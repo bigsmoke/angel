@@ -69,20 +69,20 @@ class Parser:
         is_step = False
         is_angel = True
 
-        class UnknownAngelIndicator(object):
-            indicator = '?'
-
-        class AngelDefinitionIndicator(object):
-            indicator = '!'
-
-        class AnyAngelAnyTimeIndicator(object):
-            indicator = '*'
-
         def __init__(self):
             self.is_unknown = False
             self.is_placeholder = False
             self.is_definition = False
             self.is_any_any_time = False
+
+    class UnknownAngelIndicator(object):
+        indicator = '?'
+
+    class AngelDefinitionIndicator(object):
+        indicator = '!'
+
+    class AnyAngelAnyTimeIndicator(object):
+        indicator = '*'
 
     class Point(ABC):
         indicator = '<'
@@ -111,7 +111,7 @@ class Parser:
         return self
 
     def __next__(self):
-        """Yields paths, one at the time."""
+        """Yields paths, one at a time."""
 
         path = None
 
@@ -131,7 +131,7 @@ class Parser:
             elif path is None:
                 raise BULLSyntaxError('First you must begin a path!')
             elif char in self.PLACEHOLDER_TYPES:
-                angel = 
+                angel = Angel()
             self.string_index += 1
 
 
