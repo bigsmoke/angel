@@ -21,6 +21,11 @@ namespace Angel
 
     namespace BULL
     {
+        class Step;
+        class Seat;
+        class Path;
+        class Placeholder;
+
         /**
          * A `Seat` can either be:
          *
@@ -32,7 +37,6 @@ namespace Angel
          * `Jog`.
          *
          * Seat / Ass : 
-         * Path / Jog :
          * Step / Imprint
          */
         class Seat
@@ -74,14 +78,14 @@ namespace Angel
                 {};
 
                 Placeholder(Step* step, const Type type, const int substringPosition)
-                    : Seat(path), _type(type), _substringPosition(substringPosition)
+                    : Seat(step), _type(type), _substringPosition(substringPosition)
                 {
                     assert(hasType(Type::Substring));
                 };
 
                 bool hasType(const Type type)
                 {
-                    return static_cast<int>(_type) & static_cast<int>(type) > 0;
+                    return (static_cast<int>(_type) & static_cast<int>(type)) > 0;
                 };
 
                 int substringPosition(void)
@@ -89,9 +93,9 @@ namespace Angel
                     return _substringPosition;
                 };
 
-                Path* path()
+                Step* step()
                 {
-                    return _path;
+                    return _step;
                 };
 
             private:
@@ -106,6 +110,8 @@ namespace Angel
          *
          * [         ] \ … / [ ^ ]
          * Placeholder \ … /
+         *
+         * Path / Jog :
          */
         class Path : public Seat
         {
@@ -113,10 +119,10 @@ namespace Angel
                 /**
                  * Jog along the steps of a path and return the imprint left by the heavy steps.
                  */
-                Angels jog();       
+                void jog();       
 
             private:
-                std::set<Step> steps;
+                std::vector<Step> steps;
         };
 
         class Step
@@ -141,17 +147,29 @@ namespace Angel
         class Parser
         {
             public:
-                Parser();
+                Parser()
+                {};
 
                 void parseStream(std::istream& inputStream)
                 {
-                    std::istream_iterator<int> 
+                    std::string unparsed;
+
+                    char c;
+                    while (inputStream >> c)
+                    {
+                    }
                 }
 
             private:
                 Path* _atPath;
         };
     }
+}
+
+int main(int argc, char* argv[])
+{
+    Angel::BULL::Parser parser;
+    parser.parseStream(std::cin);
 }
 
 // vim: set filetype=cpp tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
