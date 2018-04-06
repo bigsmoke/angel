@@ -38,6 +38,9 @@ namespace Angel
          *
          * Seat / Ass : 
          * Step / Imprint
+         *
+         * Each `Seat` keeps track of only one `Step`—the step to it.
+         * There can only be one `Step` _to_ a seat, but any amount of steps _from_ that `Seat` to the next steps.
          */
         class Seat
         {
