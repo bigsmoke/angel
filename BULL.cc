@@ -150,6 +150,20 @@ namespace Angel
         class Parser
         {
             public:
+                class Exception
+                {
+                    public:
+                        Exception(std::string message) : _message(message) {} 
+
+                        std::string message()
+                        {
+                            return this->_message;
+                        }
+
+                    private:
+                        std::string _message;
+                };
+
                 Parser()
                 {};
 
@@ -160,11 +174,25 @@ namespace Angel
                     char c;
                     while (inputStream >> c)
                     {
+                        if (c == ' ' or c == '\t' or c == '\n')
+                        {
+                            continue;  // Ignore most whitespace
+                        }
+
+                        unparsed += c;
+
+                        if (_atPath == NULL)
+                        {
+                            if (c != '[' and c != '(')
+                            {
+                                throw Exception(std::string("Expected block opening, got '") + unparsed + "' instead.");
+                            }
+                        }
                     }
                 }
 
             private:
-                Path* _atPath;
+                Path* _atPath = NULL;
         };
     }
 }
@@ -172,7 +200,15 @@ namespace Angel
 int main(int argc, char* argv[])
 {
     Angel::BULL::Parser parser;
-    parser.parseStream(std::cin);
+    try
+    {
+        parser.parseStream(std::cin);
+    }
+    catch (Angel::BULL::Parser::Exception exception)
+    {
+        std::cout << exception.message();
+        return 1;
+    }
 }
 
 // vim: set filetype=cpp tabstop=4 shiftwidth=4 softtabstop=4 expandtab:
