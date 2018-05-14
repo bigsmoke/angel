@@ -45,6 +45,9 @@ namespace Angel
         class Seat
         {
             public:
+                Seat() : _step(NULL)
+                {};
+
                 Seat(Step* step)
                     : _step(step)
                 {};
@@ -119,13 +122,13 @@ namespace Angel
         class Path : public Seat
         {
             public:
+                Path() : Seat() {}
                 /**
                  * Jog along the steps of a path and return the imprint left by the heavy steps.
                  */
                 void jog();       
-
-            private:
                 std::vector<Step> steps;
+            private:
         };
 
         class Step
@@ -179,14 +182,22 @@ namespace Angel
                             continue;  // Ignore most whitespace
                         }
 
-                        unparsed += c;
-
                         if (_atPath == NULL)
                         {
                             if (c != '[' and c != '(')
                             {
                                 throw Exception(std::string("Expected block opening, got '") + unparsed + "' instead.");
                             }
+                            if (c == '[' or c == '(')
+                            {
+                                _atPath = new Path();
+                            }
+                        }
+
+                        unparsed += c;
+
+                        if (c == '\\') {
+                            _atPath->steps.push_back(
                         }
                     }
                 }

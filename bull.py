@@ -9,25 +9,86 @@ import io
 import subprocess
 
 
-class BULLSyntaxError(Exception):
+class BullSyntaxError(Exception):
     pass
 
 
 class Parser:
     """A parser for BULL."""
 
-    class Path(ABC):
-        is_path = True
-        is_step = False
-        is_angel = False
+    class Element(ABC):
+        @property
+        def is_seat(self):
+            return isinstance(self, Seat)
 
-        opens_with = None
-        closes_with = None
+        @property
+        def is_path(self):
+            return isinstance(self, Path)
 
-        def __init__(self, superpath=None):
-            self.superpath = superpath
+        @property
+        def is_static(self):
+            return isinstance(self, StaticPath)
+
+        @property
+        def is_dynamic(self):
+            return isinstance(self, DynamicPath)
+
+        @property
+        def is_filter(self):
+            return isinstance(self, Filter)
+
+        @property
+        def is_step(self):
+            return isinstance(self, Step)
+
+        @property
+        def is_unknown(self):
+            return isinstance(self, UnknownAngel)
+
+        @property
+        def is_definition(self):
+            return isinstance(self, AngelDefinition)
+
+    class Seat(Element):
+        """
+        Within a path, there can only ever be one step _to_ a seat,
+        but any number of steps from that seat to subsequent seats.
+        This restriction follows from the two-dimensional nature of BULL
+        (and (sequential) languages in general).
+
+        A seat is not to be confused with an angel. An angel can have
+        any number of connections to any number of any angels, in any
+        direction. The web (or sea) of angels is therefore definitely
+        multi-dimensional.
+
+        There are two kinds of seats: paths and placeholders.
+
+        * A `Path` consists of any number of steps. Each `Step` informs a
+          link between two seats.
+        * A `Placeholder` represents any number of more or less known angels.
+          These angels may be defined, referenced or queried during
+          execution of the step, depending on the particular indicators
+          used (e.g. `?` and/or `!`).
+        """
+        pass
+
+    class Path(Seat):
+        """
+        A path consists of steps. Steps go from one `Seat` to the next.
+        """
+        opens_with = None   # Defined in subclasses
+        closes_with = None  # Defined in subclasses
+
+        def __init__(self, superseat=None, is_heavy=False):
+            if superseat is not None and not isinstance(superseat, Path):
+                raise TypeError('Superpath has to be a path.')
+
+            self.superseat = superseat
             self.steps = []
-            self.depth = superpath.depth + 1 if superpath is not None else 1
+            self.depth = superseat.depth + 1 if superseat is not None else 1
+
+        def __str__(self):
+            return self.opens_with + '…' + self.closes_with
 
     class StaticPath(Path):
         indicators = ['[', ']']
@@ -44,16 +105,30 @@ class Parser:
         opens_with = '{'
         closes_with = '}'
 
-    class Step(ABC):
-        is_path = False
-        is_step = True
-        is_angel = False
+    class Step(Element):
+        """
+        A step is always from one `Seat` to the next.
 
+        Syntactically, a step may be uni-directional, bi-directional, or symmetrical.
+        What's being modelled is always just a step from one seat to the next.
+        """
         indicators = []
 
-        def __init__(self):
-            self.path = None
-            self.angel = None
+        def __init__(self, in_path=None, to_seat=None, from_seat=None, point_seat=None, is_symmetrical=None):
+            if in_path is not None and not isinstance(in_path, Path):
+                raise TypeError('in_path must be a Path subclass.')
+            if to_seat is not None and not isinstance(to_seat, Seat):
+                raise TypeError('to_seat must be a Seat subclass.')
+            if from_seat is not None and not isinstance(from_seat, Seat):
+                raise TypeError('from_seat must be a Seat subclass.')
+            if point_seat is not None and not isinstance(point_seat, Seat):
+                raise TypeError('point_seat must be a Seat subclass.')
+
+            self.in_path = in_path
+            self.to_seat = to_seat
+            self.from_seat = from_seat
+            self.point_seat = point_seat
+            self.symmetrical = symmetrical
 
     class StepLeft(Step):
         indicators = ['\\']
@@ -64,31 +139,53 @@ class Parser:
     class StepUp(Step):
         indicators = ['|']
 
-    class Angel(object):
-        is_path = False
-        is_step = False
-        is_angel = True
+    class Point(Element):
+        pass
 
-        def __init__(self):
-            self.is_unknown = False
-            self.is_placeholder = False
-            self.is_definition = False
-            self.is_any_any_time = False
+    class PointLeft(Point):
+        indicators = ['<']
 
-    class UnknownAngelIndicator(object):
-        indicator = '?'
+    class PointRight(Point):
+        indicators = ['>']
 
-    class AngelDefinitionIndicator(object):
-        indicator = '!'
+    class Placeholder(Seat):
+        pass
 
-    class AnyAngelAnyTimeIndicator(object):
-        indicator = '*'
+    class NamedAngel(Placeholder):
+        indicators = [None]
 
-    class Point(ABC):
-        indicator = '<'
+        def __init__(self, name):
+            if not isinstance(name, str):
+                raise TypeError('name should be string.')
+
+            self.name = name
+
+    class UnknownAngel(Placeholder):
+        indicators = ['?']
+
+    class AngelDefinition(Placeholder):
+        indicators = ['!']
+
+    class AngelEnsurance(Placeholder):
+        indicators = ['?!']
+
+    class AnyAngelAnyTime(Placeholder):
+        indicators = ['*']
 
     PATH_TYPES = {T.opens_with: T for T in (StaticPath, DynamicPath, Filter)}
-    PLACEHOLDER_TYPES = {T.placeholder: T for T in (UnknownAngel, AngelDefinition, AnyAngelAnyTime)}
+    STEP_TYPES = {T.indicators[0]: T for T in (StepLeft, StepRight, StepUp)}
+    POINT_TYPES = {T.indicators[0]: T for T in (PointLeft, PointRight)}
+    PLACEHOLDER_TYPES = {
+        T.indicators[0]: T for T in (
+            UnknownAngel, AngelDefinition, AngelEnsurance, AnyAngelAnyTime
+        )
+    }
+    PATH_INDICATORS = ['[', ']', '(', ')', '{', '}']
+    STEP_INDICATORS = ['\\', '/', '|']
+    POINT_INDICATORS = ['<', '>']
+    INDICATORS = PATH_INDICATORS + STEP_INDICATORS + POINT_INDICATORS + [
+        '&', '#', '^', '*', '?', '!', '@', '~',
+    ]
 
     SPACE_CHARACTERS = [' ', '\t', '\n']
 
@@ -107,31 +204,49 @@ class Parser:
         self.string_index = 0
         self.string_length = len(self.string)
 
-    def __iter__(self):
-        return self
-
-    def __next__(self):
-        """Yields paths, one at a time."""
-
-        path = None
+    def parse_seat(self):
+        """Parse a part of a `Path` string into a `Seat` object."""
 
         while self.string_index < self.string_length:
             char = self.string[self.string_index]
-            if char in self.SPACE_CHARACTERS:
+
+            if 
+
+        return seat
+
+    def parse_element(self):
+        pass
+
+    def parse_path(self):
+        """Parse string into a `Path` object."""
+
+        expecting = Path
+        seat = None
+        point = None
+        step = None
+        name = None
+        indicator = None
+
+        while self.string_index < self.string_length:
+            char = self.string[self.string_index]
+            if char in self.SPACE_CHARACTERS and name is None:
                 pass
             elif char in self.PATH_TYPES:
                 # Initialize new path
-                path = self.PATH_TYPES[char](superpath=path)
+                seat = self.PATH_TYPES[char](superseat=path)
             elif path is not None and char == path.closes_with:
-                if path.superpath is None:
+                if seat.superseat is None:
                     # We were in a root path; let's return it.
                     return path
-                path = path.superpath
-                # We've returned to the superpath.
+                seat = path.superseat
+                # We've returned to the superseat.
             elif path is None:
-                raise BULLSyntaxError('First you must begin a path!')
-            elif char in self.PLACEHOLDER_TYPES:
-                angel = Angel()
+                raise BullSyntaxError('First you must begin a path!')
+            # We're within a path. That is good.
+            elif char in self.INDICATORS:
+                indicator += char
+            else:
+                name += char
             self.string_index += 1
 
 
