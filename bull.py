@@ -49,7 +49,7 @@ class Parser:
         def is_definition(self):
             return isinstance(self, AngelDefinition)
 
-    class Seat(Element):
+    class Seat(Element, ABC):
         """
         Within a path, there can only ever be one step _to_ a seat,
         but any number of steps from that seat to subsequent seats.
@@ -72,7 +72,7 @@ class Parser:
         """
         pass
 
-    class Path(Seat):
+    class Path(Seat, ABC):
         """
         A path consists of steps. Steps go from one `Seat` to the next.
         """
@@ -172,7 +172,9 @@ class Parser:
     class AnyAngelAnyTime(Placeholder):
         indicators = ['*']
 
-    PATH_TYPES = {T.opens_with: T for T in (StaticPath, DynamicPath, Filter)}
+    SEAT_TYPES = {T.indicators[0]: T for T in (
+        StaticPath, DynamicPath, Filter, UnknownAngel, AngelDefinition, AngelEnsurance, AnyAngelAnyTime
+    )}
     STEP_TYPES = {T.indicators[0]: T for T in (StepLeft, StepRight, StepUp)}
     POINT_TYPES = {T.indicators[0]: T for T in (PointLeft, PointRight)}
     PLACEHOLDER_TYPES = {
@@ -210,7 +212,10 @@ class Parser:
         while self.string_index < self.string_length:
             char = self.string[self.string_index]
 
-            if 
+            if char in self.SEAT_TYPES:
+                raise Exception('Dfdfdf')
+
+            self.string_index += 1
 
         return seat
 
