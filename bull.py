@@ -53,8 +53,6 @@ class Parser:
         """
         Within a path, there can only ever be one step _to_ a seat,
         but any number of steps from that seat to subsequent seats.
-        This restriction follows from the two-dimensional nature of BULL
-        (and (sequential) languages in general).
 
         A seat is not to be confused with an angel. An angel can have
         any number of connections to any number of any angels, in any
@@ -68,7 +66,7 @@ class Parser:
         * A `Placeholder` represents any number of more or less known angels.
           These angels may be defined, referenced or queried during
           execution of the step, depending on the particular indicators
-          used (e.g. `?` and/or `!`).
+          used (e.g. `?`).
         """
         pass
 
@@ -81,7 +79,7 @@ class Parser:
 
         def __init__(self, superseat=None, is_heavy=False):
             if superseat is not None and not isinstance(superseat, Path):
-                raise TypeError('Superpath has to be a path.')
+                raise TypeError('Superseat has to be a path.')
 
             self.superseat = superseat
             self.steps = []
@@ -90,18 +88,19 @@ class Parser:
         def __str__(self):
             return self.opens_with + '…' + self.closes_with
 
+        @property
+        def indicators(cls):
+            return [cls.opens_with, cls.closes_with]
+
     class StaticPath(Path):
-        indicators = ['[', ']']
         opens_with = '['
         closes_with = ']'
 
     class DynamicPath(Path):
-        indicators = ['(', ')']
         opens_with = '('
         closes_with = ')'
 
     class Filter(Path):
-        indicators = ['{', '}']
         opens_with = '{'
         closes_with = '}'
 
@@ -114,7 +113,9 @@ class Parser:
         """
         indicators = []
 
-        def __init__(self, in_path=None, to_seat=None, from_seat=None, point_seat=None, is_symmetrical=None):
+        def __init__(self, is_heavy=False, in_path=None, to_seat=None, from_seat=None, point_seat=None, symmetrical=None):
+            if not isinstance(is_heavy, bool):
+                raise TypeError('is_heavy must be boolean True or False.')
             if in_path is not None and not isinstance(in_path, Path):
                 raise TypeError('in_path must be a Path subclass.')
             if to_seat is not None and not isinstance(to_seat, Seat):
@@ -123,6 +124,8 @@ class Parser:
                 raise TypeError('from_seat must be a Seat subclass.')
             if point_seat is not None and not isinstance(point_seat, Seat):
                 raise TypeError('point_seat must be a Seat subclass.')
+            if symmetrical is not None and not isinstance(symmetrical, Step):
+                raise TypeError('symmetrical must be of type Step.')
 
             self.in_path = in_path
             self.to_seat = to_seat
@@ -139,7 +142,7 @@ class Parser:
     class StepUp(Step):
         indicators = ['|']
 
-    class Point(Element):
+    class Point(Element, ABC):
         pass
 
     class PointLeft(Point):
