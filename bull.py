@@ -2,6 +2,8 @@
 import sys
 if sys.version_info[0] < 3:
     raise ImportError('Python < 3 is unsupported.')
+if sys.version_info[0] == 3 and sys.version_info[1] < 6:
+    raise ImportError('Python >= 3.6 is needed for __init_subclass__ support.')
 
 from abc import ABC
 import curses
@@ -70,6 +72,9 @@ class Parser:
         """
         pass
 
+    class AutoIndicatorsProperty(type):
+        def __init__(
+
     class Path(Seat, ABC):
         """
         A path consists of steps. Steps go from one `Seat` to the next.
@@ -88,9 +93,9 @@ class Parser:
         def __str__(self):
             return self.opens_with + '…' + self.closes_with
 
-        @property
-        def indicators(cls):
-            return [cls.opens_with, cls.closes_with]
+        def __init_subclass__(cls, **kwargs):
+            super().__init_subclass__(**kwargs)
+            cls.indicators = [cls.opens_with, cls.closes_with]
 
     class StaticPath(Path):
         opens_with = '['
@@ -108,12 +113,14 @@ class Parser:
         """
         A step is always from one `Seat` to the next.
 
-        Syntactically, a step may be uni-directional, bi-directional, or symmetrical.
-        What's being modelled is always just a step from one seat to the next.
+        Syntactically, a step may be uni-directional, bi-directional, or
+        symmetrical. What's being modelled is always just a step from one
+        seat to the next.
         """
         indicators = []
 
-        def __init__(self, is_heavy=False, in_path=None, to_seat=None, from_seat=None, point_seat=None, symmetrical=None):
+        def __init__ (self, is_heavy=False, in_path=None, to_seat=None,
+                      from_seat=None, point_seat=None, symmetrical=None):
             if not isinstance(is_heavy, bool):
                 raise TypeError('is_heavy must be boolean True or False.')
             if in_path is not None and not isinstance(in_path, Path):
@@ -151,7 +158,7 @@ class Parser:
     class PointRight(Point):
         indicators = ['>']
 
-    class Placeholder(Seat):
+    class Placeholder(Seat, ABC):
         pass
 
     class NamedAngel(Placeholder):
@@ -175,9 +182,12 @@ class Parser:
     class AnyAngelAnyTime(Placeholder):
         indicators = ['*']
 
-    SEAT_TYPES = {T.indicators[0]: T for T in (
-        StaticPath, DynamicPath, Filter, UnknownAngel, AngelDefinition, AngelEnsurance, AnyAngelAnyTime
-    )}
+    SEAT_TYPES = {
+        T.indicators[0]: T for T in (
+            StaticPath, DynamicPath, Filter, UnknownAngel,
+            AngelDefinition, AngelEnsurance, AnyAngelAnyTime,
+        )
+    }
     STEP_TYPES = {T.indicators[0]: T for T in (StepLeft, StepRight, StepUp)}
     POINT_TYPES = {T.indicators[0]: T for T in (PointLeft, PointRight)}
     PLACEHOLDER_TYPES = {
