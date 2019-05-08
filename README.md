@@ -13,8 +13,9 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * Everything in the Angel universe (read: _namespace_) is an angel.
 * Angels are imaginary endpoints for relationships: `endpoint 1 \ < relationship > / endpoint 2`.
 * Relationships can be unidirectional (`angel X \ unidirectional relationship pointing to Y > < unidirectional relationship pointing to X / angel Y`), or bidirectional (`angel X \ < bidirectional relationship > / angel Y`).
-* Multiple steps can be organized into paths (`[]`): `angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
-* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. This is just a shorthand, though, to avoid repetition: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
+* `\` denotes a step left, back to the previous angel(s); `/` denotes a stop right, to the following angel(s).
+* Multiple steps can be organized into paths (`[]`): `[ angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
+* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. This is just a semantically identical shorthand to avoid repetition: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
 * The _substring_ syntax can be used to explicitly tie substrings (separated by `&`) along a _knot_. The knot consists of all the relationship within the path that are marked using `&`: `[ angel M \ relation to right >&< relation to left / angel N & angel O & angel P ]`.
 * Knots can only be specified within a path (`[]` or `()`).
 * Specifying substrings can continue within a subpath: `[ angel M \ rel1 >&< rel2 / angel N & [ angel N1 && angel N2 && angel N3 ] & angel O & angel P ]`.
@@ -24,7 +25,7 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
 * Each angel has a parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
 * The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck #0 / Donald Duck ! ]`
-* Angel names are inherited from each angel's ancestors. (`Donald Duck` can also be called `Duck`.)
+* Angel names are inherited from each angel's ancestors. (`Donald Duck` can be called `Duck` at the same time.)
 * `Duck` refers to the _complete set_ of angels with the `Duck` name.
 * `angel` is each angel's set of names. Most angels inherit the name, except _the_ `angel`.
 * To select only the first angel with a given name, `#0` can be used: `angel #0`.
