@@ -15,11 +15,11 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * Relationships can be unidirectional (`angel X \ unidirectional relationship pointing to Y > < unidirectional relationship pointing to X / angel Y`), or bidirectional (`angel X \ < bidirectional relationship > / angel Y`).
 * `\` denotes a step left, back to the previous angel(s); `/` denotes a stop right, to the following angel(s).
 * Multiple steps can be organized into paths (`[]`): `[ angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
-* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. This is just a semantically identical shorthand to avoid repetition: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
+* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. That is semantically identical to: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
 * The _substring_ syntax can be used to explicitly tie substrings (separated by `&`) along a _knot_. The knot consists of all the relationship within the path that are marked using `&`: `[ angel M \ relation to right >&< relation to left / angel N & angel O & angel P ]`.
-* Knots can only be specified within a path (`[]` or `()`).
+* Knots can only be specified within an explicit path (`[]` or `()`).
 * Specifying substrings can continue within a subpath: `[ angel M \ rel1 >&< rel2 / angel N & [ angel N1 && angel N2 && angel N3 ] & angel O & angel P ]`.
-* All the knots specified anywhere within the path (_excluding_ its subpaths) apply to all the angels separated using '&' within that path (_including_ its subpaths).
+* All the knots specified anywhere within the path (_excluding_ its subpaths) apply to all the angels tied together using '&' within that path (_including_ its subpaths).
 * Steps can also be _up_/_forward_: `Donald Duck \ < nephew / Huey | Dewey | Louie`. `Huey`, `Dewey` and `Louie` are all `nephew`s of `Donald Duck`, not of each other (which they would be if their relationship was described as `Donald Duck \ < nephew / Huey / Dewey / Louie`).
 * New angels are imagined into existence by the angel definition (`!`) indicator: `Donald Duck \ < nephew / !` would define `Donald Duck`'s fourth nephew.
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
@@ -27,9 +27,9 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck #0 / Donald Duck ! ]`
 * Angel names are inherited from each angel's ancestors. (`Donald Duck` can be called `Duck` at the same time.)
 * `Duck` refers to the _complete set_ of angels with the `Duck` name.
-* `angel` is each angel's set of names. Most angels inherit the name, except _the_ `angel`.
-* To select only the first angel with a given name, `#0` can be used: `angel #0`.
-* That is because the default relationship axis is `parent > < child`.
+* `angel` is in each angel's set of names. Most angels inherit the name, except _the_ `angel`, from which all the other angels inherit, directly or indirectly.
+* To select only the first angel with a given name, `#0` can be used: `[ angel #0 ]`.
+* That is because the default relationship axis in each new path is `parent > < child`.
 * The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 * `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
@@ -100,6 +100,13 @@ A subpath can refer to its superpath by means of `[^]`. Actually, this would ref
 
 The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) related along `rB` to `a1`. The angel(s) unknown would be the only angel(s) in the path's imprint.
 
+[Honestly, I still find this ambiguously. Maybe I would rather see:
+
+```
+[ a1 \ < rA [ ^ \ < rB / ? \\ ] \\ ]
+```
+]
+
 ### Querying relationships
 
 Are `angel 1` and `angel 2` related through `relationship A`?
@@ -114,6 +121,8 @@ angel 1 \ relationship A ? > / angel 2
 angel 1 \ ? > < ? / angel 2
 ```
 
+[This doesn't take into account how to be able to then relate something to the relationships. Does it need to be possible to make a point heavy?]
+
 ### Dynamic paths and command arguments
 
 ```
@@ -125,6 +134,8 @@ Dynamic paths are not walked until the moment that a _command argument_ (`@`) pl
 ```
 B \ relationship A > // @
 ```
+
+---
 
 ```
 [ @ \\ sum > / #3 | #5 ]
