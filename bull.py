@@ -2,8 +2,6 @@
 import sys
 if sys.version_info[0] < 3:
     raise ImportError('Python < 3 is unsupported.')
-if sys.version_info[0] == 3 and sys.version_info[1] < 6:
-    raise ImportError('Python >= 3.6 is needed for __init_subclass__ support.')
 
 from abc import ABC
 import curses
@@ -72,9 +70,6 @@ class Parser:
         """
         pass
 
-    class AutoIndicatorsProperty(type):
-        def __init__(
-
     class Path(Seat, ABC):
         """
         A path consists of steps. Steps go from one `Seat` to the next.
@@ -93,21 +88,20 @@ class Parser:
         def __str__(self):
             return self.opens_with + '…' + self.closes_with
 
-        def __init_subclass__(cls, **kwargs):
-            super().__init_subclass__(**kwargs)
-            cls.indicators = [cls.opens_with, cls.closes_with]
-
     class StaticPath(Path):
         opens_with = '['
         closes_with = ']'
+        indicators = ['[', ']']
 
     class DynamicPath(Path):
         opens_with = '('
         closes_with = ')'
+        indicators = ['(', ')']
 
     class Filter(Path):
         opens_with = '{'
         closes_with = '}'
+        indicators = ['{', '}']
 
     class Step(Element):
         """
@@ -188,6 +182,7 @@ class Parser:
             AngelDefinition, AngelEnsurance, AnyAngelAnyTime,
         )
     }
+    PATH_TYPES = {T.opens_with: T for T in (StaticPath, DynamicPath, Filter)}
     STEP_TYPES = {T.indicators[0]: T for T in (StepLeft, StepRight, StepUp)}
     POINT_TYPES = {T.indicators[0]: T for T in (PointLeft, PointRight)}
     PLACEHOLDER_TYPES = {
@@ -236,10 +231,9 @@ class Parser:
         pass
 
     def parse_path(self):
-        """Parse string into a `Path` object."""
+        """Parse string into an instance of one of the `Path` types."""
 
-        expecting = Path
-        seat = None
+        path = None
         point = None
         step = None
         name = None
@@ -251,12 +245,12 @@ class Parser:
                 pass
             elif char in self.PATH_TYPES:
                 # Initialize new path
-                seat = self.PATH_TYPES[char](superseat=path)
+                path = self.PATH_TYPES[char](superseat=path)
             elif path is not None and char == path.closes_with:
-                if seat.superseat is None:
+                if path.superseat is None:
                     # We were in a root path; let's return it.
                     return path
-                seat = path.superseat
+                path = path.superseat
                 # We've returned to the superseat.
             elif path is None:
                 raise BullSyntaxError('First you must begin a path!')
@@ -290,5 +284,5 @@ if __name__ == '__main__':
         test_runner.run(test_suite)
     else:
         bull_parser = Parser(sys.stdin)
-        path = next(bull_parser)
-        print(path)
+        path = bull_parser.parse_path()
+        path.jog_along()
