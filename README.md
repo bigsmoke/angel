@@ -33,6 +33,13 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 * `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
+* Filters point left and right, to steps within the superpath: `step left \ { filter } / step right`
+* Filters match events (`*`). An event can be:
+  * a creation event (`*!`),
+  * a deletion event (`*-`),
+  * a query event (`*?`). or
+  * a count event (`*#`).
+  * 
 
 ### Relating angels
 
