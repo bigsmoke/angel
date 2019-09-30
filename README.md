@@ -33,13 +33,14 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 * The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 * `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
+* Steps right of a filter are only jogged every time the all the asterisk placeholders (`*`) in the filter match a _new_ event. Or are the steps _within_ the filter then jogged?
 * Filters point left and right, to steps within the superpath: `step left \ { filter } / step right`
 * Filters match events (`*`). An event can be:
   * a creation event (`*!`),
   * a deletion event (`*-`),
   * a query event (`*?`). or
   * a count event (`*#`).
-  * 
+* Are filters daemons?
 
 ### Relating angels
 
@@ -97,9 +98,12 @@ A whole path can be made heavy, allowing stepping onto _it_ rather than its impr
 
 #### Recursion and the superpath
 
-A path can refer to itself by means of `[]`, which allows for recursion.
+* A path can refer to its own imprint by means of `[]`, which allows for recursion.
+* A subpath can refer to its superpath's imprint by means of `[^]`.
+* To refer to the path itself, not its imprint, the brackets need to be dubbled, as in `[[]]` or `[[^]]`.
+* `^` without surrounding `[]` is used to refer to the previous _step_ in the superpath. [Or should this be the _current_ step? See also my second example below.]
 
-A subpath can refer to its superpath by means of `[^]`. Actually, this would refer to the imprint of its superpath. To refer to the actual path itself would require `[[^]]`. To refer back just to the imprint of the previous _step_ in the superpath, `^` without surrounding `[]` is used.
+These are all placeholders, to they have to be suffixed by a step left indicator (`\`), prefixed by a step right indicator (`/`), seperated by a step forward indicator (`|`), or ‘inside’ relationship indicators (`<` and/or `>`).
 
 ```
 [ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
@@ -107,7 +111,7 @@ A subpath can refer to its superpath by means of `[^]`. Actually, this would ref
 
 The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) related along `rB` to `a1`. The angel(s) unknown would be the only angel(s) in the path's imprint.
 
-[Honestly, I still find this ambiguously. Maybe I would rather see:
+[Honestly, I still find this ambiguous. Maybe I would rather see:
 
 ```
 [ a1 \ < rA [ ^ \ < rB / ? \\ ] \\ ]
