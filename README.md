@@ -290,6 +290,15 @@ Like paths, patterns can be made heavy by doubling the `{}`:
 {{ heavy pattern }}
 ```
 
+When a filter matches an event, this in turn triggers an event of its own. This event can be matched by naming the filter:
+
+```
+{ Donald Duck \ < nephew / ! new Donald Duck nephew about to receive a random cap color * \ < cap color / @ \ < random color }
+{ * new Donald Duck nephew about to receive a random cap color \ 
+```
+
+The order of `!*` versus `*!` or `* name` vs `name *` matters!
+
 There's no need for explicit events, but patterns _can_ be invoked explicitly, although indirectly. Without specifying which pattern precisely, the most suitable pattern for any context can be invoked by using the `~` indicator:
 
 ```
