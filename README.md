@@ -250,7 +250,7 @@ This same filter can also be made to match anytime that anything is related alon
 
 You could say that, if `?` means _whatever_, `*` means _whenever_.
 
-`*` can be used to match the creation & destruction of endpoints (as in `/ *` or `/ -*`), as wel as the creation & destruction of relationships (as in `a \ > * < / b`).
+`*` can be used to match the creation & destruction of endpoints (as in `/ *!` and `/ *-`, respectively), as wel as the creation & destruction of relationships (as in `a \ <*> / b` or `a \ < * / b`).
 
 Events can also be forbidden to happen:
 
@@ -258,12 +258,12 @@ Events can also be forbidden to happen:
 angel 1 \ { ^ \ < relationship E / * = 0 }
 ```
 
-Nothing is then allowed to be related to `angel 1` along `relationship E`.
+Nothing is then allowed to be related to `angel 1` along `relationship E`. This allows one to to basically ‘firewall’ anything you want, on any level of all the software within the Angel system, which, in the Angel ideal, is _all_ the software.
 
 If you want to filter unlinking events:
 
 ```
-{ Donald Duck \ < nephew / -* \ Decide what to do about Donald's missing nephew. }
+{ Donald Duck \ < nephew / *- \ Decide what to do about Donald's missing nephew. }
 ```
 
 `* \` matches the newly defined angel; `-* \` matches the just-unlinked angel.
