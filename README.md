@@ -275,7 +275,10 @@ Instead of explicit events (or ‘signals’, as Qt would call them), Angel has 
 Often, you'll want to relate relationships:
 
 ```
-{ * \ < brother > / * \ father > < son / * }
+{
+  { * paternal bro A \ < paternal brother > / * paternal bro B }
+  \ son > < father / ? \ < son
+}
 ```
 
 One example of a relationship between relationships is that of superstring/substring and among substrings.
