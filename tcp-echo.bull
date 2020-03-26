@@ -1,0 +1,11 @@
+TCP receive frame \ angel name > / {{
+  
+}}
+
+[ TCP server | TCP echo server ! \
+  [ ^ \ < TCP socket // @ \ < TCP port / #7 ] \
+  { incoming TCP connection / TCP echo connection * }
+  { TCP frame received / * \ 
+    send TCP frame
+  }
+]

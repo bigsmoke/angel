@@ -364,9 +364,29 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 
 Pretending that angels exists opens up a whole new universe, where objects dissolve in their relationships. 
 
-```
 [ 9761 VB ]
 ```
+
+## Angel builtins
+
+* `angel buffer | numeric buffer !`
+* `nummeric buffer | integer buffer !`
+* `integer buffer | positive integer buffer!`
+* `integer buffer | negative integer buffer!`
+* `nummeric buffer | decimal buffer !`
+* `angel buffer | character string buffer !`
+* `character string buffer | Unicode character buffer !`
+* `angel buffer | byte string buffer !`
+* `byte string buffer | UTF-8 buffer !`
+
+### OxOS types
+
+* `angel buffer | picture buffer !`
+* `byte string buffer` | picture representation buffer !`
+* `picture representation buffer` | JPEG image !`
+* `picture representation buffer` | PNG image !`
+* `picture representation buffer` | BMP image !`
+
 
 > The goal of Computer Science is to build something that will last at least until we've finished building it.
 

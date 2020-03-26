@@ -1,0 +1,25 @@
+[ Unicode buffer | E.123 telephone number ! \
+  { 
+]
+
+[
+  [ angel | natural person !
+    \\ < angel name / physical person !
+  ] \
+  [ ^ \ < given name / ! ]
+  [ ^ \ < family name / ! ]
+  [ ^ \ < family name prefix / ! ]
+  [ ^ \ < full family name / ! ]
+  [ ^ \ < full name / ! ]
+  [ ^ \ < initials / ! ]
+]
+
+[ angel | legal person ! \
+  < angel name
+    / juridical person
+    | juridic person
+    | juristic person
+    | artifical person
+    | fictitious person
+]
+[ legal person \ < organisation name ! ]
