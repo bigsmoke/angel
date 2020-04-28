@@ -6,9 +6,9 @@ steps = angel , [ step left , [ link ] ] , [ step right , [ steps ] ] ;
 link = asymmetric link | symmetric link | knot ;
 asymmetric link = { angel , point right , [ define | undefine ] } ,
                   [ heavy knot ] , 
-		  { [ define | undefine ] , point left , angel } ;
-		  (* Do something different with heavy knots? *)
-		  (* Actually make at least one point obligatory! *)
+                  { [ define | undefine ] , point left , angel } ;
+                  (* Do something different with heavy knots? *)
+                  (* Actually make at least one point obligatory! *)
 symmetric link = point left , angel , point right ;
 point right = light point right | heavy point right ;
 point left = light point left | heavy point left ;
