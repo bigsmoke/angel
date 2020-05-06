@@ -93,8 +93,17 @@ The final unknown angel (`?`) at the right would be the angel related along `rel
 A whole path can be made heavy, allowing stepping onto _it_ rather than its imprints:
 
 ```
-[[ I \ < am / ? / a / complicated path ]] \ < angel name / I am now a complicated path with a name
+[[ I \ < am / ? / a / complicated path ]] \ < angel name / I am now a complicated path with a name !
 ```
+
+Heavy paths can be reused in another (part of the super)path. They can be called by name:
+
+```
+[[ ^ \ < sister / ? \ < father // ? ]] \ < angel name / sister's father !
+[ somebody \ < same father ?? > / sister's father ]
+```
+
+Within the context wherein the heavy path is defined, only the imprint of the path itself ends up in the step left of the superpath. Then, in the calling context, the path is jogged and the imprints from its heavy steps and placeholders seated in its place.
 
 #### Recursion and the superpath
 
