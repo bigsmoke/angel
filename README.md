@@ -100,7 +100,7 @@ A whole path can be made heavy, allowing stepping onto _it_ rather than its impr
 
 * A path can refer to its own imprint by means of `[]`, which allows for recursion.
 * A subpath can refer to its superpath's imprint by means of `[^]`.
-* To refer to the path itself, not its imprint, the brackets need to be dubbled, as in `[[]]` or `[[^]]`.
+* To refer to the path itself, not its imprint, the brackets need to be doubled, as in `[[]]` or `[[^]]`.
 * `^` without surrounding `[]` is used to refer to the previous _step_ in the superpath. [Or should this be the _current_ step? See also my second example below.]
 
 These are all placeholders, to they have to be suffixed by a step left indicator (`\`), prefixed by a step right indicator (`/`), seperated by a step forward indicator (`|`), or ‘inside’ relationship indicators (`<` and/or `>`).
