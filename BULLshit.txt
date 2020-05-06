@@ -1,0 +1,34 @@
+\	Subject
+>	Relationship to the right (relative)
+<	Relationship to the left (subject)
+/	Relative/Relation
+|	Add height
+	Add another relative using the same relationship(s) to the last explicit subject.
+       	Implies [><] / + \
+	Defaults relationship is parent><child
+
+[integer | my int @ 15 ]
+
+:	+ \ <buffer content / 
+=       \ <=> /
+<=>	<equals>
+
+Words that are not quoted (and not preceded by =) are presumed to be names.
+
+><	precedes >< follows
+	previous >< next
+
+\></	string together k
+
+[]	Context
+(@)	Command caller context
+[\]	Last subject
+[\\]	Last double subject
+[\a18\]	Last subject called a18
+[>]	Last relationship
+[<]	Last relationship
+[><]	Last asymmetric relationship
+[<>]	Last symmetric relationship
+
+@	Call angel
+@()	Call angel command
