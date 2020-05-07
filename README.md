@@ -50,17 +50,18 @@ Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `an
 [ angel 1 \ relationship A > < relationship B / angel 2 ]
 [ angel 1 \ < relationship C / angel 3 ]
 [ angel 3 \ relationship D > / angel 4 ]
+[ angel 3 \ relationship D > / angel 5 ]
 ```
-
-If any of `angel 1`, `angel 2`, `angel 3` or `angel 4` would be replaced by an `unknown angel` placeholder (`?`), the relationship wouldn't be _defined_, but _queried_.
 
 ### Querying angels
 
-Get to `angel 4` without knowing either `angel 4` or `angel 3` their names:
+Get to `angel 4` and `angel 5` without knowing either `angel 4` or `angel 3` their names:
 
 ```
 angel 1 \ < relationship C / ? \ relationship D > / ?
 ```
+
+`?` is the `unknown angel` placeholder.
 
 ### Angels don't exist; thus, they can't be created
 
