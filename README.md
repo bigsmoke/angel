@@ -52,6 +52,8 @@ Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `an
 [ angel 3 \ relationship D > / angel 4 ]
 ```
 
+If any of `angel 1`, `angel 2`, `angel 3` or `angel 4` would be replaced by an `unknown angel` placeholder (`?`), the relationship wouldn't be _defined_, but _queried_.
+
 ### Querying angels
 
 Get to `angel 4` without knowing either `angel 4` or `angel 3` their names:
@@ -125,6 +127,7 @@ The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) relate
 ```
 [ a1 \ < rA [ ^ \ < rB / ? \\ ] \\ ]
 ```
+
 ]
 
 ### Querying relationships
