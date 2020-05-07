@@ -44,13 +44,27 @@ BULL is a general-purpose computer language, and in order to serve is general pu
 
 ### Relating angels
 
-Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `angel 1` to `angel 3` through `relationship C`, and `angel 3` to `angel 4` through `relationship D`:
+Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `angel 1` to `angel 3` through `relationship C`, and `angel 3` to `angel 4` as well as `angel 5` through `relationship D`:
 
 ```
 [ angel 1 \ relationship A > < relationship B / angel 2 ]
 [ angel 1 \ < relationship C / angel 3 ]
 [ angel 3 \ relationship D > / angel 4 ]
 [ angel 3 \ relationship D > / angel 5 ]
+```
+
+### Stacking angels (sets)
+
+`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to the angel last stepped left to. We can thus abbreviate the last two lines in the previous example to:
+
+```
+[ angel 3 \ relationship D > / angel 4 | angel 5 ]
+```
+
+Or, the equivalent:
+
+```
+[ angel 3 \ relationship D > | angel 4 | angel 5 ]
 ```
 
 ### Querying angels
@@ -228,21 +242,6 @@ Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
 ```
 
 The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `#0` 
-
-### Stacking angels
-
-`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to the angel last stepped left to:
-
-```
-Donald Duck \ < newphew / Huey | Dewey | Louie
-```
-
-Or, the equivalent:
-
-```
-Donald Duck \ < nephew | Huey | Dewey | Louie
-```
-
 
 ### A path can be triggered by an event
 
