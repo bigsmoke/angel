@@ -1,6 +1,6 @@
 # Angel
 
-Angels don't exist. Therefore, every‘thing’ in a computer could be called an `angel`, because these ‘things’ are not really things; they're abstraction upon abstraction for what eventually boils down to processor instructions.
+Angels don't exist. They're pure symbolic meaning. Angel—the software system—attaches meaning to digital data. Angel is a transcendent software system. It is designed specifically to allow for the emergent property of consciousness. Consciousness has to be understood here in the narrow sense: Angel is self-aware, but not necessarily very intelligent. Self-aware means that you can ask Angel why it is doing what it's doing and it will be able to answer, as long as the language is one that the particular Angel system speaks.
 
 ## BULL—BigSmoke's Unified Linking Language {#bull}
 
@@ -8,19 +8,15 @@ If you say shit about non-existent entities, this shit is likely to be _bullshit
 
 BULL is a general-purpose computer language, and in order to serve is general purpose, it needs to be able to do only 2 things: (1) creating relationships between angels and (2) querying these relationships.
 
+BULL is just one expression of the Angel system. It's a notation and a grammar. You could come up with many others, without detracting from the core semantics of Angel. In fact, Angel would be extremely well-suited for expression in a diagrammical language. Nevertheless, for the purpose of conveying the concepts of Angels via written language, this here syntaxis is the best I—BigSmoke—can currently come up with.
+
 ### BULL in bullets
 
-* Everything in the Angel universe (read: _namespace_) is an angel.
-* Angels are imaginary endpoints for relationships: `endpoint 1 \ < relationship > / endpoint 2`.
-* Relationships can be unidirectional (`angel X \ unidirectional relationship pointing to Y > < unidirectional relationship pointing to X / angel Y`), or bidirectional (`angel X \ < bidirectional relationship > / angel Y`).
-* `\` denotes a step left, back to the previous angel(s); `/` denotes a stop right, to the following angel(s).
 * Multiple steps can be organized into paths (`[]`): `[ angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
-* For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. That is semantically identical to: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
 * The _substring_ syntax can be used to explicitly tie substrings (separated by `&`) along a _knot_. The knot consists of all the relationship within the path that are marked using `&`: `[ angel M \ relation to right >&< relation to left / angel N & angel O & angel P ]`.
 * Knots can only be specified within an explicit path (`[]`, `()`, or `{}`).
 * Specifying substrings can continue within a subpath: `[ angel M \ rel1 >&< rel2 / angel N & [ angel O1 && angel O2 && angel O3 ] & angel P & angel Q ]`. They have to be made heavy to leave an imprint for the superpath.
 * All the knots specified anywhere within the path (_excluding_ its subpaths) apply to all the angels tied together using '&' within that path (_including_ its subpaths).
-* Steps can also be _up_/_forward_: `Donald Duck \ < nephew / Huey | Dewey | Louie`. `Huey`, `Dewey` and `Louie` are all `nephew`s of `Donald Duck`, not of each other (which they would be if their relationship was described as `Donald Duck \ < nephew / Huey / Dewey / Louie`).
 * New angels are imagined into existence by the angel definition (`!`) indicator: `Donald Duck \ < nephew / !` would define `Donald Duck`'s fourth nephew.
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
 * Each angel has a parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
@@ -42,9 +38,15 @@ BULL is a general-purpose computer language, and in order to serve is general pu
   * a count event (`*#`).
 * Are filters daemons?
 
-### Relating angels
+## Angels don't exist
 
-Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `angel 1` to `angel 3` through `relationship C`, and `angel 3` to `angel 4` as well as `angel 5` through `relationship D`:
+Everything in the Angel universe (read: _namespace_) is an angel. Angels are _not_ objects, nor do they point to a reference an object of some kind. (Angels do not point; they are pointed to!)
+
+## Angels are related to other angels
+
+Angels are imaginary endpoints for relationships: `endpoint 1 \ < relationship > / endpoint 2`. Relationships can be unidirectional (`angel X \ unidirectional relationship pointing to Y > < unidirectional relationship pointing to X / angel Y`), or bidirectional (`angel X \ < bidirectional relationship > / angel Y`). Angels exist by the grace of them being related to other angels. They are useful fictions that lead an ephemeral existance until they are no longer needed.
+
+The following example relates `angel 1` to `angel 2` through `relationship A` and `relationship B`, `angel 1` to `angel 3` through `relationship C`, and `angel 3` to `angel 4` as well as `angel 5` through `relationship D`:
 
 ```
 [ angel 1 \ relationship A > < relationship B / angel 2 ]
@@ -53,21 +55,46 @@ Relate `angel 1` to `angel 2` through `relationship A` and `relationship B`, `an
 [ angel 3 \ relationship D > / angel 5 ]
 ```
 
-### Stacking angels (sets)
+## Stepping, left and right
 
-`|` represents a step forward. It is used to relate the angel to the right of `|`—the _step forward indicator_—to the angel last stepped left to. We can thus abbreviate the last two lines in the previous example to:
-
-```
-[ angel 3 \ relationship D > / angel 4 | angel 5 ]
-```
-
-Or, the equivalent:
+The point of the _step left indicator_ (`\`) and the _step right indicator_ (`/`) is that relationships can point at them. Relationship point either to the left (to a left step), or to the right (to a right step):
 
 ```
-[ angel 3 \ relationship D > | angel 4 | angel 5 ]
+[ Donald Duck \ < nephew / Huey ]
+[ Dewey \ nephew > Donald Duck ]
+[ Huey \ < brother > / Dewey ]
 ```
 
-### Querying angels
+`\` denotes a step left, back to the previous angel(s); `/` denotes a stop right, to the following angel(s).
+
+For subsequent steps to the right (`/`) along the same relationship axis, the relationship can be omitted: `angel M \ < relationship that will be used thrice / angel N / angel O / angel P`. That is semantically identical to: `angel M \ < relationship that will be used thrice / angel N \ < relationship that will be used thrice / angel O \ < relationship that will be used thrice / angel P`.
+
+Whether the step left is implicit or explicit, the step pattern is always either:
+
+* left, right, left, right, left, right;
+* left, right, […], up (see next section).
+
+```
+[ Huey \ nephew > / Donald Duck \ < love interest > / Daisy Duck \ < love interest > / Gladstone Gander ]
+```
+
+## Piling up angels (sets)
+
+Besides left and right, steps can also be _up_: `Donald Duck \ < nephew / Huey | Dewey | Louie`. `Huey`, `Dewey` and `Louie` are all `nephew`s of `Donald Duck`, not of each other (which they would be if their relationship was described as `Donald Duck \ < nephew / Huey / Dewey / Louie`).
+
+In BULL, `|`—the _step up indicator_—extends the _set_ of angels that is being stepped to or stepped from. It must either precede a step left indicator (`\`) or succeed a step right indicator (`/`).
+
+## Angels don't exist, but they can be defined
+
+Angels aren't objects. They don't have a physical representation. They aren't objects. They're just imaginary endpoints for relationships. To imagine a new angel into existence, the `!`—_angel definition_—placeholder is used:
+
+```
+angel 1 \ < relationship C / !
+```
+
+And thus an angel is defined. Mind you, though: defining something is not the same as creating something!
+
+## Querying angels
 
 Get to `angel 4` and `angel 5` without knowing either `angel 4` or `angel 3` their names:
 
@@ -75,21 +102,13 @@ Get to `angel 4` and `angel 5` without knowing either `angel 4` or `angel 3` the
 angel 1 \ < relationship C / ? \ relationship D > / ?
 ```
 
-`?` is the `unknown angel` placeholder.
+`?` is the _angel unknown_ placeholder.
 
-### Angels don't exist; thus, they can't be created
-
-Angels aren't objects. They don't have a phsyical representation. They aren't objects. They're just imaginary endpoints for relationships. To imagine a new angel into existence, the `!`—_angel definition_—placeholder is used:
-
-```
-angel 1 \ < relationship C / !
-```
-
-### Paths (static)
+## Paths (static)
 
 A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
 
-#### Heavy steps
+### Heavy steps
 
 Some steps—if they are heavy—leave an imprint. A step is made heavy by doubling the `\` or `/`.
 
@@ -105,7 +124,7 @@ The imprinted angels in a path are the angels that can be pointed at in the supe
 
 The final unknown angel (`?`) at the right would be the angel related along `rel. E` to the final unknown angel in the subpath, preceded by the heavy step right (`//`).
 
-#### Heavy paths
+### Heavy paths
 
 A whole path can be made heavy, allowing stepping onto _it_ rather than its imprints:
 
@@ -122,7 +141,7 @@ Heavy paths can be reused in another (part of the super)path. They can be called
 
 Within the context wherein the heavy path is defined, only the imprint of the path itself ends up in the step left of the superpath. Then, in the calling context, the path is jogged and the imprints from its heavy steps and placeholders seated in its place.
 
-#### Recursion and the superpath
+### Recursion and the superpath
 
 * A path can refer to its own imprint by means of `[]`, which allows for recursion.
 * A subpath can refer to its superpath's imprint by means of `[^]`.
