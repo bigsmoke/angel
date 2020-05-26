@@ -6,7 +6,7 @@ Angels don't exist. They're pure symbolic meaning. Angel—the software system�
 
 If you say shit about non-existent entities, this shit is likely to be _bullshit_; hence the name for the language with which to query and describe angels: *BULL*.
 
-BULL is a general-purpose computer language, and in order to serve is general purpose, it needs to be able to do only 2 things: (1) creating relationships between angels and (2) querying these relationships.
+BULL is a general-purpose computer language, and in order to serve is general purpose, it needs to be able to do only 2 things: ① creating relationships between angels and ② querying these relationships.
 
 BULL is just one expression of the Angel system. It's a notation and a grammar. You could come up with many others, without detracting from the core semantics of Angel. In fact, Angel would be extremely well-suited for expression in a diagrammical language. Nevertheless, for the purpose of conveying the concepts of Angels via written language, this here syntaxis is the best I—BigSmoke—can currently come up with.
 
@@ -54,6 +54,8 @@ The following example relates `angel 1` to `angel 2` through `relationship A` an
 [ angel 3 \ relationship D > / angel 4 ]
 [ angel 3 \ relationship D > / angel 5 ]
 ```
+
+Relationships are themselves angels. Does that mean that it's turtles all the way down? Yes, every‘thing’ within the Angel system is an angel.
 
 ## Stepping, left and right
 
@@ -106,7 +108,7 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 
 ## Paths (static)
 
-A path begins with `[` and ends with `]`. (Dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
+A path begins with `[` and ends with `]`. (Analogously, dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
 
 ### Heavy steps
 
@@ -123,6 +125,8 @@ The imprinted angels in a path are the angels that can be pointed at in the supe
 ```
 
 The final unknown angel (`?`) at the right would be the angel related along `rel. E` to the final unknown angel in the subpath, preceded by the heavy step right (`//`).
+
+When a step up indicator—`|`—is doubled, both the step at the left _and_ the step at the right are made heavy and will leave an imprint.
 
 ### Heavy paths
 
@@ -146,9 +150,10 @@ Within the context wherein the heavy path is defined, only the imprint of the pa
 * A path can refer to its own imprint by means of `[]`, which allows for recursion.
 * A subpath can refer to its superpath's imprint by means of `[^]`.
 * To refer to the path itself, not its imprint, the brackets need to be doubled, as in `[[]]` or `[[^]]`.
-* `^` without surrounding `[]` is used to refer to the previous _step_ in the superpath. [Or should this be the _current_ step? See also my second example below.]
+* `^` without surrounding `[]` is used to refer to the most recent step left (`\`) in the superpath.
+* There is not way to refer to the most recent step right in the superpath, because this has no use.
 
-These are all placeholders, to they have to be suffixed by a step left indicator (`\`), prefixed by a step right indicator (`/`), seperated by a step forward indicator (`|`), or ‘inside’ relationship indicators (`<` and/or `>`).
+These are all placeholders, so they have to be suffixed by a step left indicator (`\`), prefixed by a step right indicator (`/`), separated by a step up indicator (`|`), or ‘inside’ relationship indicators (`<` and/or `>`).
 
 ```
 [ a1 \ < rA / [ ^ \ < rB / ? \\ ] \\ ]
@@ -156,15 +161,7 @@ These are all placeholders, to they have to be suffixed by a step left indicator
 
 The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) related along `rB` to `a1`. The angel(s) unknown would be the only angel(s) in the path's imprint.
 
-[Honestly, I still find this ambiguous. Maybe I would rather see:
-
-```
-[ a1 \ < rA [ ^ \ < rB / ? \\ ] \\ ]
-```
-
-]
-
-### Querying relationships
+## Querying relationships
 
 Are `angel 1` and `angel 2` related through `relationship A`?
 
@@ -178,9 +175,20 @@ angel 1 \ relationship A ? > / angel 2
 angel 1 \ ? > < ? / angel 2
 ```
 
-[This doesn't take into account how to be able to then relate something to the relationships. Does it need to be possible to make a point heavy?]
+Like steps, points (`>` and `<`) can be made heavy to leave imprints of the queried relationships for the superpath.
 
-### Dynamic paths and command arguments
+## Defining relationships
+
+```
+[[
+  ^ \ ? >> / ?
+]] \ < angel name = all relationships TO other angels
+```
+```
+my angel \ < all relationships TO other angels // ?
+```
+
+## Dynamic paths and command arguments
 
 ```
 [ ( something dynamic that happens ) \ < relationship A / B ]
@@ -238,7 +246,7 @@ Counts (to determine the string length) can also be done in this manner:
 first A \ & < next // &#
 ```
 
-`&#` doesn't exactly represent the string length, because only the substrings after `#0` will be counted. 
+`&#` doesn't exactly represent the string length, because only the substrings after `#0` will be counted.
 
 Dynamic strings allow you to unfold a set of angels into a sorted sequence:
 
@@ -260,7 +268,7 @@ Van der Molen #0 / Rowan van der Molen !
 Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
 ```
 
-The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `#0` 
+The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `#0`
 
 ### A path can be triggered by an event
 
@@ -269,7 +277,7 @@ angel 1 \ { ^ \ < relationship D / * \ etc. }
 { angel 1 \ < relationship D / * \ etc. }
 ```
 
-The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`. 
+The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
 
 The enclosing `{}` separate the steps that are always executed to the steps that are taken whenever the filter within `{}` matches an event.
 
@@ -328,7 +336,7 @@ When a filter matches an event, this in turn triggers an event of its own. This 
 
 ```
 { Donald Duck \ < nephew / ! new Donald Duck nephew about to receive a random cap color * \ < cap color / @ \ < random color }
-{ * new Donald Duck nephew about to receive a random cap color \ 
+{ * new Donald Duck nephew about to receive a random cap color \
 ```
 
 The order of `!*` versus `*!` or `* name` vs `name *` matters!
@@ -346,10 +354,10 @@ Patterns have three contexts:
   1. `^~` is the _concrete pattern_ context.
   2. `^*` is the event trigger context.
   3. `^` is the _pattern path_ context.
-  
+
 The _concrete pattern_ context (`^~`) only exists when a pattern has been explicitly invoked using `~`. `^*` is always available and points to the relationship which is matched by the pattern.
-  
-  
+
+
 A pattern acts like a regular path, except that its concrete steps are not known at the time of creation. Note that this goes beyond the concept of recursion that is available in both dynamic and static ordinary paths. A pattern is about matchig a pre-existing filter on a concrete set of relationships. A pattern can be recusive, though. For that, a pair of empy curly braces (`{}`) can be used.
 
 Self-learning patterns can be defined by attaching positive and negative weight to relationships or by blacklisting events:
@@ -363,7 +371,7 @@ Self-learning patterns can be defined by attaching positive and negative weight 
 
 This wouldn't allow the pattern to match in any context with a `bad relationship` and would require at least one `good relationship`.
 
-### Indicator summary
+## BULL indicator summary
 
 | Indicator    | Imprintable? |                         |
 | ------------ | ------------:| ----------------------- |
@@ -380,7 +388,7 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 | `*`          |              | angel event             |
 | `~`          |              | dynamic path/pattern    |
 
-### Indicator combinations and their meanings
+## BULL indicator combinations and their meanings
 
 | Indicators   |                                                   |
 | ------------ | ------------------------------------------------- |
@@ -393,7 +401,7 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 
 ## The Angel universe
 
-Pretending that angels exists opens up a whole new universe, where objects dissolve in their relationships. 
+Pretending that angels exists opens up a whole new universe, where objects dissolve in their relationships.
 
 ```
 [ 9761 VB ]
@@ -411,7 +419,7 @@ Pretending that angels exists opens up a whole new universe, where objects disso
 * `angel buffer | byte string buffer !`
 * `byte string buffer | UTF-8 buffer !`
 
-### OxOS types
+## OxOS types
 
 * `angel buffer | picture buffer !`
 * `byte string buffer` | picture representation buffer !`
