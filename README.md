@@ -96,6 +96,28 @@ angel 1 \ < relationship C / !
 
 And thus an angel is defined. Mind you, though: defining something is not the same as creating something!
 
+## Because angels can't be created, they also can't be destroyed
+
+Angels disappear when they are forgotten. Since an angel is only ever an imaginary endpoint for a relationship, how it can be forgotten is by unlinking it from all other angels:
+
+```
+angel to be undefined \ # = 0 > < # = 0
+```
+
+There's a shorthand, so that you don't have to jump through these hoops:
+
+```
+angel to be undefined # = 0
+```
+
+If we were to undefine the angel (and any other angels) related along `relationship C` to `angel 1` from the previous example:
+
+```
+angel 1 \ < relationship C / # = 0
+```
+
+It's important to understand that the shorthand is equivalent to the long form. This becomes important when you are trying to match specific unlinking events in a filter.
+
 ## Querying angels
 
 Get to `angel 4` and `angel 5` without knowing either `angel 4` or `angel 3` their names:
@@ -168,13 +190,13 @@ The above path would relate `a1` along `rA` to the angel(s) unknown (`?`) relate
 Are `angel 1` and `angel 2` related through `relationship A`?
 
 ```
-angel 1 \ relationship A ? > / angel 2
+angel 1 \ relationship A ?? > / angel 2
 ```
 
 (How) are `angel 1` and `angel 2` related?
 
 ```
-angel 1 \ ? > < ? / angel 2
+angel 1 \ ? >> << ? / angel 2
 ```
 
 Like steps, points (`>` and `<`) can be made heavy to leave imprints of the queried relationships for the superpath.
@@ -300,6 +322,13 @@ This same filter can also be made to match anytime that anything is related alon
 You could say that, if `?` means _whatever_, `*` means _whenever_.
 
 `*` can be used to match the creation & destruction of endpoints (as in `/ *!` and `/ *-`, respectively), as wel as the creation & destruction of relationships (as in `a \ <*> / b` or `a \ < * / b`).
+
+* Filters point left and right, to steps within the superpath: `step left \ { filter } / step right`
+* Filters match events (`*`). An event can be:
+  * a definition event (`*!`),
+  * a deletion event (`*-`),
+  * a query event (`*?`). or
+  * a count event (`*#`).
 
 Events can also be forbidden to happen:
 
