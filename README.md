@@ -289,7 +289,7 @@ angel 1 \ { ^ \ < relationship D / * \ etc. }
 
 The steps from `*` will be walked whenever something ‘new’ is related to `angel 1` through `relationship D`.
 
-The enclosing `{}` separate the steps that are always executed to the steps that are taken whenever the filter within `{}` matches an event.
+The enclosing `{}` separate the steps that are always executed to the steps that are taken whenever the filter within `{}` matches an event. `{}` and the steps within represents a _filter_. A filter is a kind of path.
 
 This same filter can also be made to match anytime that anything is related along `relationship D` to anything else:
 
@@ -345,7 +345,7 @@ Like paths, patterns can be made heavy by doubling the `{}`:
 When a filter matches an event, this in turn triggers an event of its own. This event can be matched by naming the filter:
 
 ```
-{ Donald Duck \ < nephew / ! new Donald Duck nephew about to receive a random cap color * \ < cap color / @ \ < random color }
+{ Donald Duck \ < nephew / new Donald Duck nephew about to receive a random cap color !* \ < cap color / @ \ < random color }
 { * new Donald Duck nephew about to receive a random cap color \
 ```
 
@@ -409,35 +409,30 @@ This wouldn't allow the pattern to match in any context with a `bad relationship
 | `&#`         | The number of subsequent substrings               |
 | `&#0`        | The left-most substring in a superstring          |
 
-## The Angel universe
-
-Pretending that angels exists opens up a whole new universe, where objects dissolve in their relationships.
-
-```
-[ 9761 VB ]
-```
-
 ## Angel builtins
 
-* `angel buffer | numeric buffer !`
-* `nummeric buffer | integer buffer !`
-* `integer buffer | positive integer buffer!`
-* `integer buffer | negative integer buffer!`
-* `nummeric buffer | decimal buffer !`
-* `angel buffer | character string buffer !`
-* `character string buffer | Unicode character buffer !`
-* `angel buffer | byte string buffer !`
-* `byte string buffer | UTF-8 buffer !`
+* `angel`
+* `angel / angel buffer !`
+  - `angel buffer / numeric buffer !`
+    - `nummeric buffer / integer buffer !`
+      - `integer buffer / positive integer buffer!`
+      - `integer buffer / negative integer buffer!`
+    - `nummeric buffer / decimal buffer !`
+  - `angel buffer / character string buffer !`
+    - `character string buffer / Unicode character buffer !`
+  - `angel buffer / byte string buffer !`
+    - `byte string buffer / UTF-8 buffer !`
+* `angel / angel command !`
 
 ## OxOS types
 
-* `angel buffer | picture buffer !`
-* `byte string buffer` | picture representation buffer !`
-* `picture representation buffer` | JPEG image !`
-* `picture representation buffer` | PNG image !`
-* `picture representation buffer` | BMP image !`
+* `angel buffer / picture buffer !`
+* `byte string buffer / picture representation buffer !`
+* `picture representation buffer / JPEG image !`
+* `picture representation buffer / PNG image !`
+* `picture representation buffer / BMP image !`
 
 
-> The goal of Computer Science is to build something that will last at least until we've finished building it.
+> The goal of Computer Science is to build something that will last at least until we've finished building it. – BigSmoke
 
 <!-- :set expandtab tabstop=2 shiftwidth=2 wrap=100 : -->
