@@ -258,7 +258,9 @@ lots of angels \ greater than or equals > & < less than // &@
 
 ## Angels have parents and can have children
 
-Every angel descends from `angel`. To make an angel descend from another angel:
+Every angel descends from `angel`. (Well, `angel` itself doesn't. The zeroth angel has to be willed into being when angels don't yet exist. This is done by Atheu. Atheu, in Angel parlance, is a kind of atheist that wishes to believe. In other words: it is what bootstraps the entire Angel system. It brings to live the Angel universe.)
+
+To make an angel descend from another angel:
 
 ```
 Van der Molen #0 / Rowan van der Molen !
