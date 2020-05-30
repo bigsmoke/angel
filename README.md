@@ -128,6 +128,8 @@ The final unknown angel (`?`) at the right would be the angel related along `rel
 
 When a step up indicator—`|`—is doubled, both the step at the left _and_ the step at the right are made heavy and will leave an imprint.
 
+It doesn't matter to the superpath whether imprints of steps in the subpat were from left steps, right steps or steps up. They end up in a single pile.
+
 ### Heavy paths
 
 A whole path can be made heavy, allowing stepping onto _it_ rather than its imprints:
@@ -210,12 +212,12 @@ could return `#8`.
 
 Within `()`, the command caller context can be referenced using: `^@`.
 
-### Lengths and strings
+## Lengths and strings
 
 To get the number of `relative`s of `my angel`:
 
 ```
-my angel \ < relative // #
+[ my angel \ < relative // # ]
 ```
 
 To string angels together:
@@ -224,7 +226,7 @@ To string angels together:
 first A \ previous > & < next / second A & third A & fourth A & fifth A
 ```
 
-Semantically, this is no different from just continuing to step right. Steps are, after all, substrings of a path.
+Semantically, this is no different from just continuing to step right. Steps are, in fact, substrings of a path.
 
 ```
 first A \ previous > < next / second A / third A / fourth A / fifth A
@@ -232,7 +234,7 @@ first A \ previous > < next / second A / third A / fourth A / fifth A
 
 Regardless of this, `&` _is_ convenient, because the knot won't change if you use different relationship axes along the path.
 
-When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, etc.:
+When used together with the _unknown angel_ placeholder (`&?`), `&` means something different than when used as a _string knot_ indicator (as above). The below gets the angel next to `first A`, and next to the angel next to `first A`, and so on:
 
 ```
 first A \ & < next // &?
@@ -254,7 +256,7 @@ Dynamic strings allow you to unfold a set of angels into a sorted sequence:
 lots of angels \ greater than or equals > & < less than // &@
 ```
 
-### Angels have parents and can have children
+## Angels have parents and can have children
 
 Every angel descends from `angel`. To make an angel descend from another angel:
 
@@ -268,9 +270,15 @@ Van der Molen #0 / Rowan van der Molen !
 Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
 ```
 
-The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `#0`
+The `#0` is necessary because, otherwise, every angel that inherited the `Van der Molen` name would have become a parent of the new `angel child`. `Van der Molen` refers to the set of all angels whose `angel name` is `Van der Molen`. `#` followed by a number (in this case `#0`) selects the angels in that set which have the specified number of other angels (in this case none whatsoever) at their left along the current relationship axis.
 
-### A path can be triggered by an event
+Because angels are _defined_ rather than _created_, their ancestry can change after their initial definition. That is a mere matter of relating new parents to them.
+
+## Angels inherit their parents' relationships
+
+An angel inherits the relationships of every of its parents. There's no conflict resolution of any kind. At the same time, there's no limit to the restrictions that can be added via event filters. Using the event filter mechanism, it is trivial to say that one relationship (such as between an `angel parent` and an `angel child`) precludes another relationship. Firewalls _within_ your software, baby! It's turtles all the way up!
+
+## A path can be triggered by an event
 
 ```
 angel 1 \ { ^ \ < relationship D / * \ etc. }
