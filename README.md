@@ -214,6 +214,11 @@ my angel \ < all relationships TO other angels // ?
 
 [**Epiphany?** Is there no difference between (defining) a relationship and a regular angel? Does there need to be? Isn't that what I liked about Semantic MediaWiki?]
 
+## What a relationship _is_, in Angel terms
+
+A relationship is an Angel—that means that its somehow a descendant of _the_ `angel`. A relationship can point from any angel to any other angel, and this is where it gets funky: these endpoints can be BULL placeholders (such as `@`, `?`, `!`, or `#`). Remember, though, Angel itself is a reflexive, self-aware language. That means that whatever is a placeholder BULL must also map to some type of angel, or it simply wouldn't exist within the Angel universe and there would be nothing to reflect upon, in which case BULL would not be an Angel-compliant language. BULL _is_ an Angel-compliant language, which means that paths, steps, points and placeholders all have a proper representation as angels.
+
+On the Angel level, there's no distinction between steps left, steps right, and steps up. These are linearilizations such as necessary when expressing something multidimensional in a one-dimensional string of characters, like the computer language BULL. Instead there's just an `angel step`, which steps _from_ an angel (`step from`), and _to_ another angel (`step to`), along a relationship (`step nexus`). A step may be a `symmetrical step`.
 
 ## Dynamic paths and command arguments
 
