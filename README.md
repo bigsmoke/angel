@@ -212,7 +212,7 @@ Like steps, points (`>` and `<`) can be made heavy to leave imprints of the quer
 my angel \ < all relationships TO other angels // ?
 ```
 
-[*Epiphany?* Is there no difference between (defining) a relationship and a regular angel? Does there need to be? Isn't that what I liked about Semantic MediaWiki?]
+[**Epiphany?** Is there no difference between (defining) a relationship and a regular angel? Does there need to be? Isn't that what I liked about Semantic MediaWiki?]
 
 
 ## Dynamic paths and command arguments
