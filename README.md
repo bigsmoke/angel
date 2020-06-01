@@ -167,7 +167,7 @@ Heavy paths can be reused in another (part of the super)path. They can be called
 [ somebody \ < same father ?? > / sister's father ]
 ```
 
-Within the context wherein the heavy path is defined, only the imprint of the path itself ends up in the step left of the superpath. Then, in the calling context, the path is jogged and the imprints from its heavy steps and placeholders seated in its place.
+Within the context wherein the heavy path is defined, only the imprint of the path itself ends up in the step left of the superpath. Its steps are not jogged yet. Then, in the calling context, the path is jogged and the imprints from its heavy steps and placeholders seated in its place.
 
 ### Recursion and the superpath
 
@@ -211,6 +211,9 @@ Like steps, points (`>` and `<`) can be made heavy to leave imprints of the quer
 ```
 my angel \ < all relationships TO other angels // ?
 ```
+
+[*Epiphany?* Is there no difference between (defining) a relationship and a regular angel? Does there need to be? Isn't that what I liked about Semantic MediaWiki?]
+
 
 ## Dynamic paths and command arguments
 
