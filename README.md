@@ -214,11 +214,13 @@ my angel \ < all relationships TO other angels // ?
 
 ## Dynamic paths and command arguments
 
+A type of angel path that must always be heavy is a dynamic path. [So why have a distinct dynamic path type _at all_?]
+
 ```
-[ ( something dynamic that happens ) \ < relationship A / B ]
+[ (( something dynamic that happens ) \ < relationship A / B ]
 ```
 
-Dynamic paths are not walked until the moment that a _command argument_ (`@`) placeholder is found that relates along the _command argument_ axis:
+Heavy dynamic paths are not walked until the moment that a _command argument_ (`@`) placeholder is found that relates along the _command argument_ axis:
 
 ```
 B \ relationship A > // @
@@ -232,7 +234,7 @@ B \ relationship A > // @
 
 could return `#8`.
 
-Within `()`, the command caller context can be referenced using: `^@`.
+Within `()`, the command caller context can be referenced using the `^@`—angel caller—placeholder. More precisely, `^@` references the precise step that invokes the `@` placeholder in the calling context. It wouldn't make sense to, for instance, refer to the last step left in the calling context as the `^` placeholder does, because when defining the dynamic path there's no way to know whether it will be called at a left step, a right step, a step up or as a point.
 
 ## Lengths and strings
 
