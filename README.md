@@ -225,7 +225,7 @@ On the Angel level, there's no distinction between steps left, steps right, and 
 A type of angel path that must always be heavy is a dynamic path. [So why have a distinct dynamic path type _at all_?]
 
 ```
-[ (( something dynamic that happens ) \ < relationship A / B ]
+[ (( something dynamic that happens )) \ < relationship A / B ]
 ```
 
 Heavy dynamic paths are not walked until the moment that a _command argument_ (`@`) placeholder is found that relates along the _command argument_ axis:
