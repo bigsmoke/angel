@@ -12,21 +12,12 @@ BULL is just one expression of the Angel system. It's a notation and a grammar. 
 
 ### BULL in bullets
 
-* Multiple steps can be organized into paths (`[]`): `[ angel that will be left-stepped to \ < rel 1 / angel that will be right-stepped to and then left-stepped \ < rel 1 / another right-stepped-to angel ]`.
 * The _substring_ syntax can be used to explicitly tie substrings (separated by `&`) along a _knot_. The knot consists of all the relationship within the path that are marked using `&`: `[ angel M \ relation to right >&< relation to left / angel N & angel O & angel P ]`.
 * Knots can only be specified within an explicit path (`[]`, `()`, or `{}`).
 * Specifying substrings can continue within a subpath: `[ angel M \ rel1 >&< rel2 / angel N & [ angel O1 && angel O2 && angel O3 ] & angel P & angel Q ]`. They have to be made heavy to leave an imprint for the superpath.
 * All the knots specified anywhere within the path (_excluding_ its subpaths) apply to all the angels tied together using '&' within that path (_including_ its subpaths).
 * New angels are imagined into existence by the angel definition (`!`) indicator: `Donald Duck \ < nephew / !` would define `Donald Duck`'s fourth nephew.
 * Angels have one or more names: `Donald Duck \ < nephew / Phooey Duck !`.
-* Each angel has a parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
-* The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck #0 / Donald Duck ! ]`
-* Angel names are inherited from each angel's ancestors. (`Donald Duck` can be called `Duck` at the same time.)
-* `Duck` refers to the _complete set_ of angels with the `Duck` name.
-* `angel` is in each angel's set of names. Most angels inherit the name, except _the_ `angel`, from which all the other angels inherit, directly or indirectly.
-* To select only the first angel with a given name, `#0` can be used: `[ angel #0 ]`.
-* That is because the default relationship axis in each new path is `parent > < child`.
-* The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 * `#` followed by any number (_n_) will always select the _n_th angel in a string of angels related along the current knot (`&`).
 * `angel #0` (rather than `angel #1`) selects the root angel, because there's no angel at its ‘left’ in the default `parent > < child` relationship string.
 * Steps right of a filter are only jogged every time the all the asterisk placeholders (`*`) in the filter match a _new_ event. Or are the steps _within_ the filter then jogged?
@@ -56,6 +47,8 @@ The following example relates `angel 1` to `angel 2` through `relationship A` an
 ```
 
 Relationships are themselves angels. Does that mean that it's turtles all the way down? Yes, every‘thing’ within the Angel system is an angel.
+
+An angel can only be used as a relationship when it derives from `angel nexus` somehow. (More about inheritance later.)
 
 ## Stepping, left and right
 
@@ -128,9 +121,24 @@ angel 1 \ < relationship C / ? \ relationship D > / ?
 
 `?` is the _angel unknown_ placeholder.
 
-## Paths (static)
+## Multiple steps can be organized into paths (`[]`)
 
-A path begins with `[` and ends with `]`. (Analogously, dynamic paths begin and end with `(` and `)` respectively, but more about that later.)
+```
+[ angel that will be left-stepped to
+    \ < rel 1 / angel that will be right-stepped to and then left-stepped
+    \ < rel 1 / another right-stepped-to angel
+]
+```
+
+A static path begins with `[` and ends with `]`. There are also dynamic paths (enclosed in `()`) and filters (enclosed in `{}`).
+
+A path is walked …
+
+* … as soon as it's defined, in the case of a static path;
+* … as soon as a command argument is invoked, in the case of a dynamic path;
+* … as soon as a pattern is recognized, in the case of a filter.
+
+The relationships defined in a path don't pop into existence until the path is actually walked. Once defined, the relationship between two angels is modelled as an `angel link`. An `angel link` has itself a `link to` link, a `link from` link, and belongs to a `link nexus`. When a link is symmetrical, it has a `symmetrical link` relationship to its opposite, and visa versa.
 
 ### Heavy steps
 
@@ -311,6 +319,15 @@ Because angels are _defined_ rather than _created_, their ancestry can change af
 ## Angels inherit their parents' relationships
 
 An angel inherits the relationships of every of its parents. There's no conflict resolution of any kind. At the same time, there's no limit to the restrictions that can be added via event filters. Using the event filter mechanism, it is trivial to say that one relationship (such as between an `angel parent` and an `angel child`) precludes another relationship. Firewalls _within_ your software, baby! It's turtles all the way up!
+
+* Each angel (except _the_ `angel`) has at least one parent angel: `Duck \ angel parent >< angel child / Donald Duck !`.
+* The `angel parent >< angel child` relationship axis is also the default relationship axis, if no relationship has yet been specified at that step in a path: `[ Duck #0 / Donald Duck ! ]`
+* Angel names are inherited from each angel's ancestors. (`Donald Duck` can be called `Duck` at the same time.)
+* `Duck` refers to the _complete set_ of angels with the `Duck` name.
+* `angel` is in each angel's set of names. Most angels inherit the name, except _the_ `angel`, from which all the other angels inherit, directly or indirectly.
+* To select only the first angel with a given name, `#0` can be used: `[ angel #0 ]`.
+* That is because the default relationship axis in each new path is `parent > < child`.
+* The default relationship axis _is not_ a knot; it is `parent >< child`, _not_ `parent >&< child`.
 
 ## A path can be triggered by an event
 
