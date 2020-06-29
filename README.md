@@ -27,7 +27,6 @@ BULL is just one expression of the Angel system. It's a notation and a grammar. 
   * a deletion event (`*-`),
   * a query event (`*?`). or
   * a count event (`*#`).
-* Are filters daemons?
 
 ## Angels don't exist
 
@@ -252,6 +251,19 @@ could return `#8`.
 
 Within `()`, the command caller context can be referenced using the `^@`—angel caller—placeholder. More precisely, `^@` references the precise step that invokes the `@` placeholder in the calling context. It wouldn't make sense to, for instance, refer to the last step left in the calling context as the `^` placeholder does, because when defining the dynamic path there's no way to know whether it will be called at a left step, a right step, a step up or as a point.
 
+----
+
+A command definition is denoted by `(` and `)`. A non-heavy command is somewhat (but not wholly) comparable to an anonymous/inline function in traditional programming languages.
+
+A command definition may contain one or more _command argument_ (`(@)`) definitions:
+
+```
+(
+  (@) \ male sexual partner > < female sexual partner / (@)
+  (@) \ sexual produce > / ()
+)
+```
+
 ## Lengths and strings
 
 To get the number of `relative`s of `my angel`:
@@ -436,6 +448,9 @@ Self-learning patterns can be defined by attaching positive and negative weight 
 ```
 
 This wouldn't allow the pattern to match in any context with a `bad relationship` and would require at least one `good relationship`.
+
+
+*TODO:* Are filters daemons?
 
 ## BULL indicator summary
 
