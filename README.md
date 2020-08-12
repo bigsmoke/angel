@@ -112,7 +112,7 @@ It's important to understand that the shorthand is equivalent to the long form. 
 
 ## Querying angels
 
-Get to `angel 4` and `angel 5` without knowing either `angel 4` or `angel 3` their names:
+Get to `angel 4` and `angel 5` without knowing either `angel 5`, `angel 4` or `angel 3` their names:
 
 ```
 angel 1 \ < relationship C / ? \ relationship D > / ?
@@ -157,7 +157,7 @@ The final unknown angel (`?`) at the right would be the angel related along `rel
 
 When a step up indicator—`|`—is doubled, both the step at the left _and_ the step at the right are made heavy and will leave an imprint.
 
-It doesn't matter to the superpath whether imprints of steps in the subpat were from left steps, right steps or steps up. They end up in a single pile.
+It doesn't matter to the superpath whether imprints of steps in the subpath were from left steps, right steps or steps up. They end up in a single pile.
 
 ### Heavy paths
 
@@ -318,7 +318,7 @@ To make an angel descend from another angel:
 Van der Molen #0 / Rowan van der Molen !
 ```
 
-`Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that the default relationship axis is the `angel parent >< angel child` relationship, the above example can be made more verbose:
+`Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that *the default relationship axis is the `angel parent >< angel child` relationship*, the above example can be made more verbose:
 
 ```
 Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
