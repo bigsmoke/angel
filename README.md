@@ -318,7 +318,7 @@ To make an angel descend from another angel:
 Van der Molen #0 / Rowan van der Molen !
 ```
 
-`Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that *the default relationship axis is the `angel parent >< angel child` relationship*, the above example can be made more verbose:
+`Rowan van der Molen` will be a new `angel child` of `angel parent` `van der Molen`. Child angels inherit all their parents' names. Without making use of the rule that **the default relationship axis is the `angel parent >< angel child` relationship**, the above example can be made more verbose:
 
 ```
 Van der Molen \ angel parent > & < angel child / #0 & Rowan van der Molen !
