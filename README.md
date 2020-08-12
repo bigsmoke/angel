@@ -182,7 +182,7 @@ Within the context wherein the heavy path is defined, only the imprint of the pa
 * A subpath can refer to its superpath's imprint by means of `[^]`.
 * To refer to the path itself, not its imprint, the brackets need to be doubled, as in `[[]]` or `[[^]]`.
 * `^` without surrounding `[]` is used to refer to the most recent step left (`\`) in the superpath.
-* There is not way to refer to the most recent step right in the superpath, because this has no use.
+* **There is no way to refer to the most recent step right in the superpath**, because this has no use.
 
 These are all placeholders, so they have to be suffixed by a step left indicator (`\`), prefixed by a step right indicator (`/`), separated by a step up indicator (`|`), or ‘inside’ relationship indicators (`<` and/or `>`).
 
