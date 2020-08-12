@@ -66,7 +66,7 @@ For subsequent steps to the right (`/`) along the same relationship axis, the re
 Whether the step left is implicit or explicit, the step pattern is always either:
 
 * left, right, left, right, left, right;
-* left, right, […], up (see next section).
+* left, right, up, up, left, right (see next section).
 
 ```
 [ Huey \ nephew > / Donald Duck \ < love interest > / Daisy Duck \ < love interest > / Gladstone Gander ]
