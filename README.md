@@ -210,13 +210,22 @@ Like steps, points (`>` and `<`) can be made heavy (by doubling `>`/`<`) to leav
 
 ## Defining relationships
 
+A relationship is nothing more than a path which is used to point to another angel.
+
 ```
 [[
   ^ \ ? >> / ?
 ]] \ < angel name / all relationships TO other angels !
 ```
+
 ```
 my angel \ < all relationships TO other angels // ?
+```
+
+`^` is left-step-oriented. However, within a path that is used as a relationship
+
+```
+? \\ all relationships TO other angels > / my angel
 ```
 
 [**Epiphany?** Is there no difference between (defining) a relationship and a regular angel? Does there need to be? Isn't that what I liked about Semantic MediaWiki?]
