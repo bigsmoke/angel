@@ -213,7 +213,7 @@ Like steps, points (`>` and `<`) can be made heavy to leave imprints of the quer
 ```
 [[
   ^ \ ? >> / ?
-]] \ < angel name = all relationships TO other angels
+]] \ < angel name / all relationships TO other angels !
 ```
 ```
 my angel \ < all relationships TO other angels // ?
