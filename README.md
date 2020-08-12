@@ -206,7 +206,7 @@ angel 1 \ relationship A ?? > / angel 2
 angel 1 \ ? >> << ? / angel 2
 ```
 
-Like steps, points (`>` and `<`) can be made heavy to leave imprints of the queried relationships for the superpath.
+Like steps, points (`>` and `<`) can be made heavy (by doubling `>`/`<`) to leave imprints of the queried relationships for the superpath.
 
 ## Defining relationships
 
