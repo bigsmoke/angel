@@ -210,6 +210,18 @@ Like steps, points (`>` and `<`) can be made heavy (by doubling `>`/`<`) to leav
 
 ## Defining relationships
 
+A relation **must** be a filter.
+
+```
+{{
+  { nexus from } \ ? >> / { nexus to }
+}} \ < angel name / all relationships TO other angels !
+```
+
+```
+my angel \ < all relationships TO other angels // ?
+```
+
 A relationship is nothing more than a path which is used to point to another angel.
 
 ```
@@ -239,6 +251,16 @@ On the Angel level, there's no distinction between steps left, steps right, and 
 ## Dynamic paths and command arguments
 
 A type of angel path that must always be heavy is a dynamic path. [So why have a distinct dynamic path type _at all_?]
+
+```
+((
+  ^ \ ? >> / ?
+)) \ < angel name / all relationships TO other angels !
+```
+
+```
+my angel \ < all relationships TO other angels // ?
+```
 
 ```
 [ (( something dynamic that happens )) \ < relationship A / B ]
